@@ -37,188 +37,7 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="scripts/bd.js"></script>
 <script type="text/javascript" src="scripts/menuHeight.js"></script>
-<script type="text/javascript" charset="utf-8">
-
-    var applaunchCount = window.localStorage.getItem('launchCount');
-    var remoteFiles = [];
-    var networkState = "";
-
-    if(applaunchCount) {
-        //document.location.href="busqueda.html";
-    }
-    else {
-        configurar_db();
-        init();
-    }
-
-    function init(){
-        document.addEventListener("deviceready", download, true);
-    }
-
-    function download() {
-
-        networkState = navigator.connection.type;
-
-        if(networkState === "wifi" || networkState === "2g" || networkState === "3g" || networkState === "4g")
-        {
-            remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_Productos2.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_EtapasCicloFenologico2.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_PartesPlanta2.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/jkx6w5xslzf9y4y/TATB_OrganismosProdEtaPla.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/ie1l7f1u7onma9h/TATB_Organismos.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/j23hllzu1fqwsos/TATB_OrganismosSubSec.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/7ywy8hjq6hrd78e/TATB_TipsDrAgro.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/m3v9dgv4u9tk3hz/TATB_ProductosEtapaPlanta.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/ieenjtoopot4vhj/TATB_ProductosEtapa.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/hukv30jx4p0nyxh/TATB_Fotos.json");
-            remoteFiles.push("https://dl.dropboxusercontent.com/s/ipci8cuofvlylk7/TATB_ProductoOrganismoFoto.json");
-
-            setTimeout(function() {
-
-                /*var windowWidth = $(window).width();
-                var windowHeight = $(window).height();
-                var ancho=windowWidth-(windowWidth/10);
-                $('#content-alert').html('<p>Para utilizar esta aplicación correctamente primero debe descargar la información, desea descargarla ?</p>');
-                $("#div-confirm").dialog({
-                    modal: true,
-                    draggable: false,
-                    resizable: false,
-                    title: 'Advertencia',
-                    minWidth:ancho,
-                    my: "center",
-                    at: "center",
-                    of: window,
-                    show: 'blind',
-                    hide: 'blind',
-                    dialogClass: 'prueba',
-                    buttons: {
-                        "Aceptar": function() {
-                            $(this).dialog("close");
-                            downloadFiles();
-                        },
-                        "Cancelar": function() {
-                            $(this).dialog("close");
-                            abrirAlert("La aplicación no funcionará correctamente hasta que descargue la información, para hacerlo dirijase al menu opción Acerca de Mí!!");
-                        }
-                    }
-                });*/
-
-                var conf = confirm("Para utilizar esta aplicación correctamente primero debe descargar la información, desea descargarla ?");
-                if (conf == true) {
-                    downloadFiles();
-                } else {
-                    alert("La aplicación no funcionará correctamente hasta que descargue la información, para hacerlo dirijase al menu opción Acerca de Mí!!");
-                }
-
-            }, 400);
-        }
-        else
-        {
-            //abrirAlert("Debe tener conexión a internet para utilizar correctamente la aplicación");
-            alert("Debe tener conexión a internet para utilizar correctamente la aplicación");
-        }
-    }
-
-    function downloadFiles() {
-        $("#loading").text("Descargando información...");
-        $("#status").fadeIn();
-        $("#preloader").fadeIn();
-
-        downloadArchieves();
-    }
-
-    function downloadArchieves() {
-
-        if (remoteFiles.length == 0) {
-            $("#status").fadeOut();
-            $("#preloader").fadeOut();
-            
-            window.localStorage.setItem('launchCount', 1);
-            
-            //abrirConfirm("Descarga de informacíon exitosa!!");
-            alert("Descarga de informacíon exitosa!!");
-
-            return;
-        }
-        
-        var remoteFile = remoteFiles.pop();
-
-        var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
-
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-            fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
-                var localPath = fileSystem.root.toURL() + localFileName;
-                if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
-                    localPath = localPath.substring(7);
-                }
-                var ft = new FileTransfer();
-                ft.download(remoteFile,
-                    localPath, function(entry) {
-                        downloadFiles();
-                    }, fail);
-            }, fail);
-        }, fail);
-    }
-
-    function fail(error) {
-        console.log(error.code);
-    }
-
-    /*function abrirAlert(contenido){
-
-        var windowWidth = $(window).width();
-        var windowHeight = $(window).height();
-        var ancho=windowWidth-(windowWidth/10);
-        $('#content-alert').html('<p>'+contenido+'</p>');
-        $("#div-confirm").dialog({
-            modal: true,
-            draggable: false,
-            resizable: false,
-            title: 'Advertencia',
-            minWidth:ancho,
-            my: "center",
-            at: "center",
-            of: window,
-            show: 'blind',
-            hide: 'blind',
-            dialogClass: 'prueba',
-            buttons: {
-                "Aceptar": function() {
-                    $(this).dialog("close");
-                }
-            }
-        });
-
-    }
-
-    function abrirConfirm(contenido){
-
-        var windowWidth = $(window).width();
-        var windowHeight = $(window).height();
-        var ancho=windowWidth-(windowWidth/10);
-        $('#content-alert').html('<p>'+contenido+'</p>');
-        $("#div-confirm").dialog({
-            modal: true,
-            draggable: false,
-            resizable: false,
-            title: 'Advertencia',
-            minWidth:ancho,
-            my: "center",
-            at: "center",
-            of: window,
-            show: 'blind',
-            hide: 'blind',
-            dialogClass: 'prueba',
-            buttons: {
-                "Aceptar": function() {
-                    $(this).dialog("close");
-                    document.location.href="adminCultivo.html";
-                }
-            }
-        });
-    }*/
-
-</script>
+<script type="text/javascript" src="scripts/administrar_cultivos.js"></script>
 
 <script type="text/javascript">
 function swapStyleSheet(sheet){
@@ -227,12 +46,12 @@ function swapStyleSheet(sheet){
 </script>
 
 </head>
-<body>
+<body onload="onLoad()">
 
 <div id="preloader">
 	<div id="status">
     	<p id="loading" class="center-text">
-			Cargando Acerca de Mí...
+			Cargando Descarga de Contenido...
         </p>
     </div>
 </div>
@@ -275,7 +94,7 @@ function swapStyleSheet(sheet){
                     <div class="nav-item">
                         <a href="#" class="dropdown-nav">Features</a>
                         <div class="nav-item-submenu">
-                            <a href="adminCultivo.html">Administrar</a>
+                            <a href="intro.html">Introduction</a>
                             <a href="type.html">Typography</a>
                             <a href="jquery.html">jQuery</a>
                         </div>
@@ -336,50 +155,49 @@ function swapStyleSheet(sheet){
     </div>
 
     <div id="content" class="page-content">   
-            
+    
         <div class="content-controls">
             <a href="#" class="deploy-sidebar"></a>
-            <em>CONOCE A DR.AGRO!</em>
+            <em>CULTIVOS DISPONIBLES</em>
         </div>
-        
-        <div class="content">                               
-            <div class="decoration"></div>            
-
-            <div class="container no-bottom">
-                <div class="portfolio-item-full-width hide">
-                    <img class="responsive-image" src="images/dr-agro/dr_agro_about.png" alt="img">
-                    
-                    <div class="drAgroProfesion" style="font-family:Verdana">CONOZCA A DR. AGRO</div>
-                    <div class="decoration"></div>                        
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="toggle-1">
-                    <a href="#" class="deploy-toggle-2"  style="font-family:Verdana">Qué es Dr.Agro?</a>
-                    <div class="toggle-content">
-                        <p style="text-align:left;font-size:16px;font-family:Verdana">
-                            Dr. Agro es una aplicación móvil dirigida a asistentes técnicos y productores agropecuarios, con el fin de apoyar y orientar la identificación, manejo y control de insectos – plagas y enfermedades de los principales cultivos.
-                        </p>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="container">
-                <div class="toggle-1">
-                    <a href="#" class="deploy-toggle-2" style="font-family:Verdana">Cómo me ayuda Dr.Agro?</a>
-                    <div class="toggle-content">
-                        <p style="text-align:left;font-size:16px;font-family:Verdana">
-                            Dr. Agro arrojará una ficha técnica cuya información le ayudará a conocer con mayor profundidad el organismo, así mismo podrá tomar decisiones en tiempo real mediante el acceso a diversas herramientas multimedia que lo orientarán en las acciones de manejo y control de insectos - plagas y enfermedades en el cultivo. 
-                        </p>
-                    </div>
-                </div>
-            </div>             
+         
+        <div class="content">
             
             <div class="decoration"></div>
+
+            <div class="container no-bottom">
+                <h2>Instrucciones</h2>
+            </div>
             
-            <p class="drAgroInvitacionUno">Dr.Agro te invita a compartir tu Conocimiento</p>               
+            <div class="container no-bottom">                
+                    <p class="quote-item">
+                        <img src="images/dr-agro/dr-agro-icon2.png" alt="img">
+                        Hola, soy Dr. Agro, le invito a que por favor seleccione las casillas de los cultivos de su interés y luego presione el botón descargar.
+                    </p>                
+            </div>
             
+            <div class="decoration"></div>
+
+                <div class="container no-bottom">
+                    <h4>Selecciona los cultivos de tú interes!</h4>
+                </div> 
+                <div class="container half-bottom">
+                    <div id="producto" class="one-half">
+                        <!--<h3 style="margin-left:20px;font-family:Verdana;" name="titulo"><input type="checkbox" id="" name="producto" value=""/>ejemplo</h3>-->
+                    </div>
+                </div>  
+            
+
+            <div class="decoration"></div>
+            
+            
+                <div class="container">
+                    <input type="submit" class="buttonWrap button button-green contactSubmitButton" id="contactSubmitButton" value="Descargar" data-formId="contactForm" onclick="guardarListaProductos()"/>
+                </div>
+                
+                      
+            <div class="decoration"></div>
+
             <div class="container">
                 <div class="footer-socials">
                     <a class="facebook-footer"></a>
@@ -387,15 +205,16 @@ function swapStyleSheet(sheet){
                     <a class="twitter-footer"></a>
                 </div>
                 <p class="copyright uppercase center-text no-bottom">Copyright 2013<br> All rights reserved</p>        
-            </div>
-            
-            <!--<div class="container">         
+            </div>                     
+                      
+            <!--<div class="container">
                 <div>                    
-                    <a href="#" class="goup-footer"></a>                    
-                </div>                       
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>
+                    <a href="#" class="goup-footer"></a>
+                </div>
+                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>      
             </div>-->
-        </div>          
+        </div> 
+        
     </div>
 
     <!--<div id="content" class="page-content">   
