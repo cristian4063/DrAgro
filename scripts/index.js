@@ -31,6 +31,8 @@ function download() {
         remoteFiles.push("https://dl.dropboxusercontent.com/s/ieenjtoopot4vhj/TATB_ProductosEtapa.json");
         remoteFiles.push("https://dl.dropboxusercontent.com/s/hukv30jx4p0nyxh/TATB_Fotos.json");
         remoteFiles.push("https://dl.dropboxusercontent.com/s/ipci8cuofvlylk7/TATB_ProductoOrganismoFoto.json");
+        remoteFiles.push("https://dl.dropboxusercontent.com/u/75467020/TATB_OrganismosProdEtapa2.json");
+        remoteFiles.push("https://dl.dropboxusercontent.com/u/75467020/TATB_FotosDrGaleria.json");
 
         setTimeout(function() {
 

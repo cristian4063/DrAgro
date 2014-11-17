@@ -29,6 +29,17 @@
 	-moz-text-size-adjust: none;
 	-ms-text-size-adjust: none;
 }
+
+/*------------------Se añade para comparar-----------------*/
+input[type="radio"] {
+	-webkit-appearance: radio !important;
+}
+
+input[type="checkbox"] {
+	-webkit-appearance: checkbox !important;
+}
+/*---------------------------------------------------------*/
+
 *:focus {
 	outline: none;
 }
@@ -49,11 +60,24 @@ a:hover{
 	color: #000;
 }
 
-div, a, p, img, blockquote, form, fieldset, textarea, input, label, iframe, code, pre {
+/*div, a, p, img, blockquote, form, fieldset, textarea, input, label, iframe, code, pre {
 	display: block;
 	overflow:hidden;
 	position:relative;
+}*/
+
+/*------------------Se añade para comparar-----------------*/
+div{
+    display: block;
+    overflow:hidden;
+    position:relative;
 }
+ 
+a, p, img, blockquote, form, fieldset, textarea, label, iframe, code, pre {
+    display: block; 
+    position:relative;
+}
+/*---------------------------------------------------------*/
 
 p {
 	line-height: 20px;

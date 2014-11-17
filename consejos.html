@@ -34,54 +34,12 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/framework.js"></script>
 <script type="text/javascript" src="scripts/framework.launcher.js"></script>
-
-<!-- LINK SCRIPTS EQUIPO UX -->
+<script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="scripts/menuHeight.js"></script>
 <script type="text/javascript" src="scripts/consejos.js"></script>
 
-<!-- JAVASCRIPT EQUIPO UX -->
- <script type="text/javascript">
-        
-        $(document).ready(function() {
-            var applaunchCount = window.localStorage.getItem('launchCount');
-            
-            if(applaunchCount) {
-                changeLink();
-            }
-
-        });
-
-        function changeLink(){
-            $("#idLink").empty();
-            $("#idLink").append('<a href="acerca.html" class="nav-regular">Acerca de Mí</a>');
-        }
-
-    </script>
-
-<!-- ESTILOS PARA ALERTA EMERGENTE -->
-<style type="text/css">
-        /*.ui-widget-header{
-            border: 1px solid #27ae60 !important;
-            background-color: #27ae60 !important;
-            background: #27ae60 !important;
-        }
-
-
-        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-            color: #FFFFFF !important;  
-        }
-        .ui-dialog .ui-dialog-buttonpane button{
-            background:#27ae60 !important;
-            border: 1px solid #27ae60 !important;
-        }*/
-
-</style>
-
-
-
-
 </head>
-<body>
+<body onload="onLoad()">
 
 <div id="preloader">
     <div id="status">
@@ -98,7 +56,7 @@
             <div class="sidebar-content-background">
                 <div class="sidebar-section">
                     <a href="#" class="sidebar-close"></a>
-                    <em>Navigation</em>
+                    <em>Menu</em>
                 </div>
                 <div class="sidebar-decoration"></div>         
                 <a href="#" class="sidebar-logo"></a>              
@@ -114,7 +72,7 @@
                         <a href="#" class="dropdown-nav">Plagas y Enfermedades</a>
                         <div class="nav-item-submenu">
                             <a href="busqueda.html">Ficha Técnica</a>
-                            <a href="thumbfolio.html">Galería de Fotos</a>
+                            <a href="galeria.html">Galería de Fotos</a>
                         </div>
                     </div>
 
@@ -171,11 +129,11 @@
                 <div class="container">
 
                     <div class="one-half">
-                        <h1><input type="submit" class="buttonWrap button button-green contactSubmitButton"  value="<" data-formId="contactForm" onclick="consejoAnterior()"/></h1>
+                        <h1><input type="button" class="buttonWrap button button-green contactSubmitButton"  value="<" onclick="consejoAnterior()"/></h1>
                     </div>
 
                     <div class="two-half last-column">
-                        <h1><input type="submit" class="buttonWrap button button-green contactSubmitButton"  value=">" data-formId="contactForm" onclick="consejoSiguiente()"/></h1>                        
+                        <h1><input type="button" class="buttonWrap button button-green contactSubmitButton"  value=">" onclick="consejoSiguiente()"/></h1>                        
                     </div>
 
                 </div>
