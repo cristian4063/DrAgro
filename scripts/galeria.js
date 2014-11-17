@@ -136,8 +136,8 @@ function buscarOrganismoCultivo(Id)
     numeropp = 1;
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            if(data[i].Prod_Id == Id){
-                idsOrganismos.push(field.Organismo_Id);
+            if(data[i].prodid == Id){
+                idsOrganismos.push(field.organismoid);
             }
         });
         Lista_OrganismosGaleria();
@@ -152,9 +152,9 @@ function Lista_OrganismosGaleria()
     numeropp = 1;
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            var t = $.inArray(data[i].Organismo_Id, idsOrganismos)
+            var t = $.inArray(data[i].organismoid, idsOrganismos)
             if(t !== -1){
-                texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="organismo" value="'+ data[i].Organismo_Id + '" id="'+ data[i].Organismo_Id +'" onchange="cambioCheckOrg(this)" />'+ data[i].Organismo_Desc +'</h3>';                                   
+                texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="organismo" value="'+ data[i].organismoid + '" id="'+ data[i].organismoid +'" onchange="cambioCheckOrg(this)" />'+ data[i].organismodesc +'</h3>';                                   
             }         
         });
         $("#enfermedad").html(texto);
@@ -179,9 +179,9 @@ function buscarFotos(){
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            if(data[i].Prod_Id === (IdProductoSeleccionado * 1) && data[i].Organismo_Id === (IdOrganismoSeleccionado * 1)){
-                idsFotos.push(field.Foto_Id);
-                orden.push(field.Foto_Orden);
+            if(data[i].prodid === (IdProductoSeleccionado * 1) && data[i].organismoid === (IdOrganismoSeleccionado * 1)){
+                idsFotos.push(field.fotoid);
+                orden.push(field.fotoorden);
             }         
         });    
         SacarImagenes();
@@ -197,7 +197,7 @@ function SacarImagenes(){
     $.getJSON("" + path + "", function(data) {
         texto = "";
         $.each(data, function (i, field) {
-            var t = $.inArray(field.Foto_Id, idsFotos);
+            var t = $.inArray(field.fotoid, idsFotos);
             if(t !== -1){
                 imagenes[orden[t]-1] = field;
             }         
@@ -212,7 +212,7 @@ function pintarImagenes(imagenes){
     var texto = "";
     texto += "<ul class='gallery square-thumb'>";
     $.each(imagenes,function(i,imagen){
-        texto += "<li><a class='swipebox' href='" + imagen.Foto_Url + "' title='" + imagen.Foto_Desc + "'><img src='" + imagen.Foto_Url + "' alt='img' /></a></li>";
+        texto += "<li><a class='swipebox' href='" + imagen.fotourl + "' title='" + imagen.fotodesc + "'><img src='" + imagen.fotourl + "' alt='img' /></a></li>";
     });
     texto += "</ul>";
     $("#ResultadoBusqueda").html(texto);

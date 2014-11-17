@@ -54,7 +54,7 @@ function cargar_Consejos()
             
             if (data[i].DrAgroTips_Estado === "1") {  
 
-                   consejos.push(data[i].DrAgroTips_Desc);                        
+                   consejos.push(data[i].dragrotipsdesc);                        
            }
         });
         consejoSiguiente();

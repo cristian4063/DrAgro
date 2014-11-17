@@ -76,9 +76,9 @@ function BuscarImagenes()
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
             for (var j = 0; j < listaProductos.length; j++) {
-                if(field.Prod_Id == listaProductos[j])
+                if(field.prodid == listaProductos[j])
                 {
-                    listaImagenes.push(field.Organismo_Foto);
+                    listaImagenes.push(field.organismofoto);
                 }
             };
         });

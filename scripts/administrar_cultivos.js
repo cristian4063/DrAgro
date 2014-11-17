@@ -60,7 +60,7 @@ function crear_lista_productos(tx, results) {
 
     $.getJSON("" + path + "", function(data) { 
         $.each(data, function (i, field) {
-            texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ i +'" name="titulo"><input type="checkbox" id="'+data[i].Prod_Id+'" name="producto" value="' + data[i].Prod_Id + '_' + data[i].Prod_Desc + ' "/>'+ data[i].Prod_Desc +'</h3>';
+            texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ i +'" name="titulo"><input type="checkbox" id="'+data[i].prodid+'" name="producto" value="' + data[i].prodid + '_' + data[i].proddesc + ' "/>'+ data[i].proddesc +'</h3>';
         }); 
 
         $("#producto").html(texto);
@@ -150,9 +150,9 @@ function BuscarImagenes()
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
             for (var j = 0; j < listaProductos.length; j++) {
-                if(field.Prod_Id == listaProductos[j])
+                if(field.prodid == listaProductos[j])
                 {
-                    listaImagenes.push(field.Organismo_Foto);
+                    listaImagenes.push(field.organismofoto);
                 }
             };
         });
