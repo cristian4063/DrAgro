@@ -71,16 +71,18 @@ function EliminarCultivos(tx) {
 function BuscarImagenes() 
 {
     var ruta = window.localStorage.getItem("ruta");
-    var path = ruta + "TATB_ProductoOrganismoFoto.json";
+    var path = ruta + "tatbproductoorganismofoto.json";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            for (var j = 0; j < listaProductos.length; j++) {
-                if(field.prodid == listaProductos[j])
-                {
-                    listaImagenes.push(field.organismofoto);
-                }
-            };
+            $.each(field, function (x, item) {
+                for (var j = 0; j < listaProductos.length; j++) {
+                    if(item.prodid == listaProductos[j])
+                    {
+                        listaImagenes.push(item.organismofoto);
+                    }
+                };
+            });
         });
         deleteImages();
     });

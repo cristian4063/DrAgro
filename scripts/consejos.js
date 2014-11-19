@@ -26,7 +26,7 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("tatbproductos.json", null, gotFileEntry, fail);
     ruta = fileSystem.root.toURL();
 }
 
@@ -44,18 +44,18 @@ function fail(evt) {
 
 function cargar_Consejos()
 {
-    var path = ruta + "TATB_TipsDrAgro.json";     
+    var path = ruta + "tatbtipsdragro.json";     
     
     consejos = new Array();    
     
     var conteo = "";    
     $.getJSON("" + path + "", function(data) {   
-        $.each(data, function (i, field) {   
-            
-            if (data[i].DrAgroTips_Estado === "1") {  
-
-                   consejos.push(data[i].dragrotipsdesc);                        
-           }
+        $.each(data, function (i, field) {
+            $.each(field, function (x, item) {
+                if (field[x].dragrotipsestado === "1") {  
+                    consejos.push(field[x].dragrotipsdesc);                        
+                }
+            });
         });
         consejoSiguiente();
     });
@@ -67,18 +67,14 @@ function consejoSiguiente(){
     if(incremento >= consejos.length){
         incremento = 0;
         texto += '<p style="font-size:18px;margin-right:15px;margin-left:15px;margin-top:15px">' + consejos[incremento] + '</p>' + '<p style="font-size:18px;text-align:center">Consejo ' + (incremento +1) + ' de ' + (consejos.length) + '</p>';        
+        $("#consejosDrAgro").html(texto); 
+        incremento++;   
+    }else{                 
 
-            $("#consejosDrAgro").html(texto); 
-            incremento++; 
-           
-        }else{                 
-
-            texto += '<p style="font-size:18px;margin-right:15px;margin-left:15px;margin-top:15px">' + consejos[incremento] + '</p>' + '<p style="font-size:18px;text-align:center">Consejo ' + (incremento +1) + ' de ' + (consejos.length) + '</p>';        
-
-            $("#consejosDrAgro").html(texto); 
-            incremento++;         
-            
-        }
+        texto += '<p style="font-size:18px;margin-right:15px;margin-left:15px;margin-top:15px">' + consejos[incremento] + '</p>' + '<p style="font-size:18px;text-align:center">Consejo ' + (incremento +1) + ' de ' + (consejos.length) + '</p>';
+        $("#consejosDrAgro").html(texto); 
+        incremento++;        
+    }
 }
 
 function consejoAnterior(){    
@@ -86,21 +82,16 @@ function consejoAnterior(){
     
     if(incremento >= consejos.length){
         incremento = 0;
-        texto += '<p style="font-size:18px;margin-right:15px;margin-left:15px;margin-top:15px">' + consejos[incremento] + '</p>' + '<p style="font-size:18px;text-align:center">Consejo ' + (incremento +1) + ' de ' + (consejos.length) + '</p>';        
-
-            $("#consejosDrAgro").html(texto); 
-            incremento++; 
-           
-        }else if(incremento < consejos.length && incremento >1){   
-            incremento--;  
-            incremento--; 
-            
-            texto += '<p style="font-size:18px;margin-right:15px;margin-left:15px;margin-top:15px">' + consejos[incremento] + '</p>' + '<p style="font-size:18px;text-align:center">Consejo ' + (incremento +1) + ' de ' + (consejos.length) + '</p>';        
-
-            $("#consejosDrAgro").html(texto); 
-                    
-            incremento++;
-        }
+        texto += '<p style="font-size:18px;margin-right:15px;margin-left:15px;margin-top:15px">' + consejos[incremento] + '</p>' + '<p style="font-size:18px;text-align:center">Consejo ' + (incremento +1) + ' de ' + (consejos.length) + '</p>';
+        $("#consejosDrAgro").html(texto); 
+        incremento++;     
+    }else if(incremento < consejos.length && incremento >1){   
+        incremento--;  
+        incremento--; 
+        texto += '<p style="font-size:18px;margin-right:15px;margin-left:15px;margin-top:15px">' + consejos[incremento] + '</p>' + '<p style="font-size:18px;text-align:center">Consejo ' + (incremento +1) + ' de ' + (consejos.length) + '</p>';
+        $("#consejosDrAgro").html(texto);   
+        incremento++;
+    }
 }
 
 /*function abrirAlert(contenido){

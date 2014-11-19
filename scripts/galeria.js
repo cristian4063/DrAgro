@@ -31,7 +31,7 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("tatbproductos.json", null, gotFileEntry, fail);
     ruta = fileSystem.root.toURL();
 }
 
@@ -128,17 +128,18 @@ function cambioCheckProd(element){
 }*/
 
 function buscarOrganismoCultivo(Id) 
-{    
-    //var path = ruta2 + "TATB_OrganismosProdEtapa2.json";
-    var path = ruta + "TATB_OrganismosProdEtaPla.json";
+{
+    var path = ruta + "tatborganismosprodetapla.json";
     var cadena = "";   
     cont = 0;
     numeropp = 1;
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            if(data[i].prodid == Id){
-                idsOrganismos.push(field.organismoid);
-            }
+            $.each(field, function (x, item) {
+                if(field[x].prodid == Id){
+                    idsOrganismos.push(item.organismoid);
+                }
+            });
         });
         Lista_OrganismosGaleria();
     });
@@ -146,16 +147,18 @@ function buscarOrganismoCultivo(Id)
     
 function Lista_OrganismosGaleria() 
 {    
-    var path = ruta + "TATB_Organismos.json";
+    var path = ruta + "tatborganismos.json";
     var texto = "";
     cont = 0;
     numeropp = 1;
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            var t = $.inArray(data[i].organismoid, idsOrganismos)
-            if(t !== -1){
-                texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="organismo" value="'+ data[i].organismoid + '" id="'+ data[i].organismoid +'" onchange="cambioCheckOrg(this)" />'+ data[i].organismodesc +'</h3>';                                   
-            }         
+            $.each(field, function (x, item) {
+                var t = $.inArray(field[x].organismoid, idsOrganismos)
+                if(t !== -1){
+                    texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="organismo" value="'+ field[x].organismoid + '" id="'+ field[x].organismoid +'" onchange="cambioCheckOrg(this)" />'+ field[x].organismodesc +'</h3>';                                   
+                }
+            });         
         });
         $("#enfermedad").html(texto);
     });
@@ -170,26 +173,23 @@ function cambioCheckOrg(element){
 
 function buscarFotos(){
 
-    /*$("#loading").text("Cargando...");
-    $("#status").fadeIn();
-    $("#preloader").fadeIn();*/
-
-    //var path = ruta2 + "TATB_FotosDrGaleria.json";
-    var path = ruta + "TATB_FotosDrGaleria.json";
+    var path = ruta + "tatbfotosdrgaleria.json";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            if(data[i].prodid === (IdProductoSeleccionado * 1) && data[i].organismoid === (IdOrganismoSeleccionado * 1)){
-                idsFotos.push(field.fotoid);
-                orden.push(field.fotoorden);
-            }         
+            $.each(field, function (x, item) {
+                if(field[x].prodid == (IdProductoSeleccionado * 1) && field[x].organismoid == (IdOrganismoSeleccionado * 1)){
+                    idsFotos.push(item.fotoid);
+                    orden.push(item.fotoorden);
+                }
+            });         
         });    
         SacarImagenes();
     });
 }
 
 function SacarImagenes(){
-    var path = ruta + "TATB_Fotos.json";
+    var path = ruta + "tatbfotos.json";
     var texto = ""; 
     var tamArr = Math.max.apply(Math,orden);
     var imagenes = new Array(tamArr);
@@ -197,10 +197,12 @@ function SacarImagenes(){
     $.getJSON("" + path + "", function(data) {
         texto = "";
         $.each(data, function (i, field) {
-            var t = $.inArray(field.fotoid, idsFotos);
-            if(t !== -1){
-                imagenes[orden[t]-1] = field;
-            }         
+            $.each(field, function (x, item) {
+                var t = $.inArray(item.fotoid, idsFotos);
+                if(t !== -1){
+                    imagenes[orden[t]-1] = item;
+                }
+            });         
         });
         orden = [];
         pintarImagenes(imagenes);
@@ -212,15 +214,14 @@ function pintarImagenes(imagenes){
     var texto = "";
     texto += "<ul class='gallery square-thumb'>";
     $.each(imagenes,function(i,imagen){
-        texto += "<li><a class='swipebox' href='" + imagen.fotourl + "' title='" + imagen.fotodesc + "'><img src='" + imagen.fotourl + "' alt='img' /></a></li>";
+        if(i < 9) {
+            texto += "<li><a class='swipebox' href='" + imagen.fotourl + "' title='" + imagen.fotodesc + "'><img src='" + imagen.fotourl + "' alt='img' /></a></li>";
+        }
     });
     texto += "</ul>";
     $("#ResultadoBusqueda").html(texto);
     $("#ResultadoBusqueda").css('display','block');
     idsFotos = [];
-
-    /*$("#status").fadeOut();
-    $("#preloader").fadeOut();*/
 
     $('.swipebox').swipebox();
 

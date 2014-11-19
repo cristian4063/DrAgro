@@ -20,7 +20,20 @@ function download() {
 
     if(networkState === "wifi" || networkState === "2g" || networkState === "3g" || networkState === "4g")
     {
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_Productos2.json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductos?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbetapasciclofenologico?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbpartesplanta?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismosprodetapla?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismos?$format=json");
+        //remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismosubsec?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbtipsdragro?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductosetapaplanta?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductosetapa?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbfotos?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductoorganismofoto?$format=json");
+        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbfotosdrgaleria?$format=json");
+
+        /*remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_Productos2.json");
         remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_EtapasCicloFenologico2.json");
         remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_PartesPlanta2.json");
         remoteFiles.push("https://dl.dropboxusercontent.com/s/jkx6w5xslzf9y4y/TATB_OrganismosProdEtaPla.json");
@@ -32,7 +45,7 @@ function download() {
         remoteFiles.push("https://dl.dropboxusercontent.com/s/hukv30jx4p0nyxh/TATB_Fotos.json");
         remoteFiles.push("https://dl.dropboxusercontent.com/s/ipci8cuofvlylk7/TATB_ProductoOrganismoFoto.json");
         remoteFiles.push("https://dl.dropboxusercontent.com/u/75467020/TATB_OrganismosProdEtapa2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/75467020/TATB_FotosDrGaleria.json");
+        remoteFiles.push("https://dl.dropboxusercontent.com/u/75467020/TATB_FotosDrGaleria.json");*/
 
         setTimeout(function() {
 
@@ -104,7 +117,8 @@ function downloadArchieves() {
     
     var remoteFile = remoteFiles.pop();
 
-    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
+    //var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
+    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1, remoteFile.lastIndexOf('?')) + ".json";
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
         fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {

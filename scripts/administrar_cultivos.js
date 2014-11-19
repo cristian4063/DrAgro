@@ -25,7 +25,7 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("tatbproductos.json", null, gotFileEntry, fail);
     ruta = fileSystem.root.toURL();
 }
 
@@ -55,12 +55,15 @@ function cargar_lista_productos(tx) {
 
 function crear_lista_productos(tx, results) {
     var len = results.rows.length;
-    var path = ruta + "TATB_Productos2.json";
+    var path = ruta + "tatbproductos.json";
     var texto = "";
 
     $.getJSON("" + path + "", function(data) { 
         $.each(data, function (i, field) {
-            texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ i +'" name="titulo"><input type="checkbox" id="'+data[i].prodid+'" name="producto" value="' + data[i].prodid + '_' + data[i].proddesc + ' "/>'+ data[i].proddesc +'</h3>';
+            $.each(field, function (x, item) {
+                texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ x +'" name="titulo"><input type="checkbox" id="'+field[x].prodid+'" name="producto" value="' + field[x].prodid + '_' + field[x].proddesc + ' "/>'+ field[x].proddesc +'</h3>';
+            });
+            //texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ i +'" name="titulo"><input type="checkbox" id="'+data[i].prodid+'" name="producto" value="' + data[i].prodid + '_' + data[i].proddesc + ' "/>'+ data[i].proddesc +'</h3>';
         }); 
 
         $("#producto").html(texto);
@@ -145,16 +148,19 @@ function GuardarProducto(tx) {
 function BuscarImagenes() 
 {
     var ruta = window.localStorage.getItem("ruta");
-    var path = ruta + "TATB_ProductoOrganismoFoto.json";
+    var path = ruta + "tatbproductoorganismofoto.json";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            for (var j = 0; j < listaProductos.length; j++) {
-                if(field.prodid == listaProductos[j])
-                {
-                    listaImagenes.push(field.organismofoto);
-                }
-            };
+            $.each(field, function (x, item) {
+                for (var j = 0; j < listaProductos.length; j++) {
+                    if(item.prodid == listaProductos[j])
+                    {
+                        listaImagenes.push(item.organismofoto);
+                    }
+                };
+                //texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ x +'" name="titulo"><input type="checkbox" id="'+field[x].prodid+'" name="producto" value="' + field[x].prodid + '_' + field[x].proddesc + ' "/>'+ field[x].proddesc +'</h3>';
+            });
         });
         downloadImages();
     });
