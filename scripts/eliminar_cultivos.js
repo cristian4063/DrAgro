@@ -71,31 +71,28 @@ function EliminarCultivos(tx) {
 function BuscarImagenes() 
 {
     var ruta = window.localStorage.getItem("ruta");
-    var path = ruta + "tatbproductoorganismofoto.json";
+    var path = ruta + "TATB_ProductoOrganismoFoto.json";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                for (var j = 0; j < listaProductos.length; j++) {
-                    if(item.prodid == listaProductos[j])
-                    {
-                        listaImagenes.push(item.organismofoto);
-                    }
-                };
-            });
+            for (var j = 0; j < listaProductos.length; j++) {
+                if(field.Prod_Id == listaProductos[j])
+                {
+                    listaImagenes.push(field.Organismo_Foto);
+                }
+            };
         });
         deleteImages();
     });
 }
 
-function deleteImages() {
-
+function deleteImages() 
+{
     if (listaImagenes.length == 0) {
         $("#status").fadeOut();
         $("#preloader").fadeOut();
         listaProductos = [];
-        //abrirConfirm("Eliminación de informacíon exitosa!!");
-        alert("Eliminación de informacíon exitosa!!");
+        abrirConfirm("Eliminación de informacíon exitosa!!");
 
         return;
     }
@@ -129,12 +126,13 @@ function OperacionEfectuada() {
     console.log("Operación efectuada!");
 }
 
+//Funcion Fallo
 function fail(error) {
     console.log(error.code);
 }
 
-/*function abrirConfirm(contenido){
-
+function abrirConfirm(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -143,7 +141,7 @@ function fail(error) {
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -158,4 +156,4 @@ function fail(error) {
             }
         }
     });
-}*/
+}

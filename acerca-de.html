@@ -34,9 +34,22 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/framework.js"></script>
 <script type="text/javascript" src="scripts/framework.launcher.js"></script>
-
-<!-- SCRIPTS EQUIPO UX -->
 <script type="text/javascript" src="scripts/menuHeight.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      var applaunchCount = window.localStorage.getItem('launchCount');
+      
+      if(applaunchCount) {
+          changeLink();
+      }
+
+  });
+
+  function changeLink(){
+      $("#idLink").empty();
+      $("#idLink").append('<a href="acerca.html" class="nav-regular">Acerca de Mí</a>');
+  }
+</script>
 
 </head>
 <body>
@@ -44,7 +57,7 @@
 <div id="preloader">
 	<div id="status">
     	<p class="center-text">
-			Cargando Términos y Condiciones...  
+			Cargando Acerca De...  
         </p>
     </div>
 </div>
@@ -53,7 +66,7 @@
 <div class="all-elements">
     <div id="sidebar" class="page-sidebar">
         <div class="page-sidebar-scroll">
-			<div class="sidebar-content-background">
+			<div id="contentMenu" class="sidebar-content-background">
             	<div class="sidebar-section">
                     <a href="#" class="sidebar-close"></a>
                     <em>Menu</em>
@@ -65,7 +78,7 @@
                 <div class="sidebar-navigation">     
                      
                     <div id="idLink" class="nav-item">
-                        <a href="index.html" class="active-nav">Acerca de mí</a>
+                        <a href="index.html" class="nav-regular">Acerca de mí</a>
                     </div>
                     
                     <div class="nav-item">
@@ -97,7 +110,8 @@
                 
                 <div class="sidebar-decoration"></div>
                 
-                <p class="sidebar-copyright">Copyright 2013. All rights reserved</p>
+                <a href="#" class="sidebar-logo-footer"></a>
+                <!--<p class="sidebar-copyright">Copyright 2013. All rights reserved</p>-->
                 
             </div>
         </div>
@@ -183,52 +197,14 @@
 
             <div class="decoration"></div>
 
-            <div class="container">         
-                <!-- <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a> -->
-                    <a href="#" class="goup-footer"></a>
-                   <!--  <a href="#" class="twitter-footer"></a>
-                </div> -->
+            <div class="container">
+                <a href="#" class="goup-footer"></a>
                 <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
             </div>
 
         </div> 
     </div>           
 </div>
-
-
-    <!--<div id="content" class="page-content">   
-    
-        <div class="content-controls">
-        	<a href="#" class="deploy-sidebar"></a>
-            <em>TÉRMINOS Y CONDICIONES</em>
-        </div>
-         
-        <div class="content">
-			<div class="decoration"></div>
-            
-
-        	<div class="container no-bottom">
-                <p>
-                    <H2 style="font-family:Verdana;font-weight:bold">TÉRMINOS Y CONDICIONES</H2>
-                    <h3><p style="text-align:left;font-family:Verdana">La información suministrada a través de este aplicativo, sea esta temporal o permanente, se constituye en un medio informativo de carácter auxiliar que no suple los medios oficiales, canales legales de notificación y/o asistencia técnica agropecuaria, por tanto no tiene efectos vinculantes para Corpoica</p></h3>
-                </p>
-            </div>
-            <div class="decoration"></div> 
-                
-            <div class="container">         
-                <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a>
-                    <a href="#" class="goup-footer"></a>
-                    <a href="#" class="twitter-footer"></a>
-                </div>
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
-			</div>
-		</div> 
-        
-        </div>           
-    </div>-->
-
 </body>
 </html>
 

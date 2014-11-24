@@ -3,7 +3,7 @@ var remoteFiles = [];
 var networkState = "";
 
 if(applaunchCount) {
-    //document.location.href="busqueda.html";
+    document.location.href="busqueda.html";
 }
 else {
     configurar_db();
@@ -20,36 +20,22 @@ function download() {
 
     if(networkState === "wifi" || networkState === "2g" || networkState === "3g" || networkState === "4g")
     {
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductos?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbetapasciclofenologico?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbpartesplanta?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismosprodetapla?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismos?$format=json");
-        //remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismosubsec?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbtipsdragro?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductosetapaplanta?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductosetapa?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbfotos?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductoorganismofoto?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbfotosdrgaleria?$format=json");
-
-        /*remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_Productos2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_EtapasCicloFenologico2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_PartesPlanta2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/jkx6w5xslzf9y4y/TATB_OrganismosProdEtaPla.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/ie1l7f1u7onma9h/TATB_Organismos.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/j23hllzu1fqwsos/TATB_OrganismosSubSec.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/7ywy8hjq6hrd78e/TATB_TipsDrAgro.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/m3v9dgv4u9tk3hz/TATB_ProductosEtapaPlanta.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/ieenjtoopot4vhj/TATB_ProductosEtapa.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/hukv30jx4p0nyxh/TATB_Fotos.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/ipci8cuofvlylk7/TATB_ProductoOrganismoFoto.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/75467020/TATB_OrganismosProdEtapa2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/75467020/TATB_FotosDrGaleria.json");*/
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_Productos2.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_EtapasCicloFenologico2.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_PartesPlanta2.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_OrganismosProdEtaPla.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_Organismos.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_OrganismosSubSec.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_TipsDrAgro.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_ProductosEtapaPlanta.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_ProductosEtapa.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_Fotos.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_ProductoOrganismoFoto.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_FotosDrGaleria.json");
 
         setTimeout(function() {
 
-            /*var windowWidth = $(window).width();
+            var windowWidth = $(window).width();
             var windowHeight = $(window).height();
             var ancho=windowWidth-(windowWidth/10);
             $('#content-alert').html('<p>Para utilizar esta aplicación correctamente primero debe descargar la información, desea descargarla ?</p>');
@@ -57,7 +43,7 @@ function download() {
                 modal: true,
                 draggable: false,
                 resizable: false,
-                title: 'Advertencia',
+                title: 'Aviso',
                 minWidth:ancho,
                 my: "center",
                 at: "center",
@@ -75,21 +61,13 @@ function download() {
                         abrirAlert("La aplicación no funcionará correctamente hasta que descargue la información, para hacerlo dirijase al menu opción Acerca de Mí!!");
                     }
                 }
-            });*/
-
-            var conf = confirm("Para utilizar esta aplicación correctamente primero debe descargar la información, desea descargarla ?");
-            if (conf == true) {
-                downloadFiles();
-            } else {
-                alert("La aplicación no funcionará correctamente hasta que descargue la información, para hacerlo dirijase al menu opción Acerca de Mí!!");
-            }
+            });
 
         }, 400);
     }
     else
     {
-        //abrirAlert("Debe tener conexión a internet para utilizar correctamente la aplicación");
-        alert("Debe tener conexión a internet para utilizar correctamente la aplicación");
+        abrirAlert("Debe tener conexión a internet para utilizar correctamente la aplicación");
     }
 }
 
@@ -109,16 +87,15 @@ function downloadArchieves() {
         
         window.localStorage.setItem('launchCount', 1);
         
-        //abrirConfirm("Descarga de informacíon exitosa!!");
-        alert("Descarga de informacíon exitosa!!");
+        abrirConfirm("Descarga de informacíon exitosa!!");
 
         return;
     }
     
     var remoteFile = remoteFiles.pop();
 
-    //var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
-    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1, remoteFile.lastIndexOf('?')) + ".json";
+    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
+    //var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1, remoteFile.lastIndexOf('?')) + ".json";
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
         fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
@@ -139,8 +116,8 @@ function fail(error) {
     console.log(error.code);
 }
 
-/*function abrirAlert(contenido){
-
+function abrirAlert(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -149,7 +126,7 @@ function fail(error) {
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -163,11 +140,10 @@ function fail(error) {
             }
         }
     });
-
 }
 
-function abrirConfirm(contenido){
-
+function abrirConfirm(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -176,7 +152,7 @@ function abrirConfirm(contenido){
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -191,4 +167,4 @@ function abrirConfirm(contenido){
             }
         }
     });
-}*/
+}

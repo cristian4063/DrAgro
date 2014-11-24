@@ -1,0 +1,17 @@
+/*--------------------Estilos alerta---------------------*/
+.ui-widget-header {
+    border: 1px solid #27ae60 !important;
+    background-color: #27ae60 !important;
+    background: #27ae60 !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane button{
+    background:#27ae60 !important;
+    border: 1px solid #27ae60 !important;
+    color: white;
+}
+
+.ui-icon-closethick {
+    background-image: url('../images/ui/close.png') !important;
+    background-position: 25% 20%;;
+}

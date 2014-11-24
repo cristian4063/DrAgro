@@ -26,7 +26,7 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("tatbproductos.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
     ruta = fileSystem.root.toURL();
 }
 
@@ -44,7 +44,7 @@ function fail(evt) {
 
 function cargar_Consejos()
 {
-    var path = ruta + "tatbtipsdragro.json";     
+    var path = ruta + "TATB_TipsDrAgro.json";     
     
     consejos = new Array();    
     
@@ -52,8 +52,8 @@ function cargar_Consejos()
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
             $.each(field, function (x, item) {
-                if (field[x].dragrotipsestado === "1") {  
-                    consejos.push(field[x].dragrotipsdesc);                        
+                if (field[x].DrAgroTips_Estado === "1") {  
+                    consejos.push(field[x].DrAgroTips_Desc);                        
                 }
             });
         });
@@ -94,8 +94,8 @@ function consejoAnterior(){
     }
 }
 
-/*function abrirAlert(contenido){
-
+function abrirAlert(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -104,9 +104,8 @@ function consejoAnterior(){
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
-        //position: ['center', 'top'],
         my: "center",
         at: "center",
         of: window,
@@ -119,4 +118,4 @@ function consejoAnterior(){
             }
         }
     });
-}*/
+}

@@ -24,6 +24,11 @@ $(document).ready(function() {
 
 });
 
+function changeLink(){
+    $("#idLink").empty();
+    $("#idLink").append('<a href="acerca.html" class="nav-regular">Acerca de Mí</a>');
+}
+
 function downloadUpdate() {
 
     actualizarVersion();
@@ -32,30 +37,18 @@ function downloadUpdate() {
 
     if(networkState === "wifi" || networkState === "2g" || networkState === "3g" || networkState === "4g" || networkState === "unknown")
     {
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductos?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbetapasciclofenologico?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbpartesplanta?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismosprodetapla?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismos?$format=json");
-        //remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatborganismosubsec?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbtipsdragro?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductosetapaplanta?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductosetapa?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbfotos?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbproductoorganismofoto?$format=json");
-        remoteFiles.push("http://servicedatosabiertoscolombia.cloudapp.net/v1/corpoica/tatbfotosdrgaleria?$format=json");
-
-        /*remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_Productos2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_EtapasCicloFenologico2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/u/105758706/json-Dr.Agro/TATB_PartesPlanta2.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/jkx6w5xslzf9y4y/TATB_OrganismosProdEtaPla.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/ie1l7f1u7onma9h/TATB_Organismos.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/j23hllzu1fqwsos/TATB_OrganismosSubSec.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/7ywy8hjq6hrd78e/TATB_TipsDrAgro.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/m3v9dgv4u9tk3hz/TATB_ProductosEtapaPlanta.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/ieenjtoopot4vhj/TATB_ProductosEtapa.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/hukv30jx4p0nyxh/TATB_Fotos.json");
-        remoteFiles.push("https://dl.dropboxusercontent.com/s/ipci8cuofvlylk7/TATB_ProductoOrganismoFoto.json");*/
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_Productos2.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_EtapasCicloFenologico2.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_PartesPlanta2.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_OrganismosProdEtaPla.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_Organismos.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_OrganismosSubSec.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_TipsDrAgro.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_ProductosEtapaPlanta.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_ProductosEtapa.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_Fotos.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_ProductoOrganismoFoto.json");
+        remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_FotosDrGaleria.json");
 
         setTimeout(function() {
             downloadFiles();
@@ -64,8 +57,7 @@ function downloadUpdate() {
     }
     else
     {
-        alert("Para descargar la actualización debe tener conexión a internet");
-        //abrirAlert("Para descargar la actualización debe tener conexión a internet");
+        abrirAlert("Para descargar la actualización debe tener conexión a internet");
     }
 }
 
@@ -85,16 +77,15 @@ function downloadArchieves() {
         
         window.localStorage.setItem('launchCount', 1);
         
-        alert("Descarga de informacíon exitosa!!");
-        //abrirConfirm("Descarga de informacíon exitosa!!");
+        abrirConfirm("Descarga de informacíon exitosa!!");
 
         return;
     }
     
     var remoteFile = remoteFiles.pop();
 
-    //var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
-    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1, remoteFile.lastIndexOf('?')) + ".json";
+    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
+    //var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1, remoteFile.lastIndexOf('?')) + ".json";
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
         fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
@@ -135,7 +126,7 @@ function lista_productos(tx, results) {
             $.each(field, function (x, item) {
                 if (field[x].verdragrono > results.rows.item(0).numero) {
 
-                    /*var windowWidth = $(window).width();
+                    var windowWidth = $(window).width();
                     var windowHeight = $(window).height();
                     var ancho=windowWidth-(windowWidth/10);
                     $('#content-alert').html('<p>Hay una nueva actualización disponible!!, desea descargarla ?</p>');
@@ -143,7 +134,7 @@ function lista_productos(tx, results) {
                         modal: true,
                         draggable: false,
                         resizable: false,
-                        title: 'Advertencia',
+                        title: 'Aviso',
                         minWidth:ancho,
                         my: "center",
                         at: "center",
@@ -162,18 +153,9 @@ function lista_productos(tx, results) {
                                 abrirAlert("La actualización estara disponible mas tarde!!");
                             }
                         }
-                    });*/
-                    
-                    var conf = confirm("Hay una nueva actualización disponible!!, desea descargarla ?");
-                    if (conf == true) {
-                        numVersion = data[i].verdragrono;
-                        downloadUpdate();
-                    } else {
-                        alert("La actualización estara disponible mas tarde!!");
-                    }
+                    });
                 }
             });
-            
         });
     });
 }
@@ -206,8 +188,8 @@ function fail(error) {
     console.log(error.code);
 }
 
-/*function abrirAlert(contenido){
-
+function abrirAlert(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -216,7 +198,7 @@ function fail(error) {
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -230,11 +212,10 @@ function fail(error) {
             }
         }
     });
-
 }
 
-function abrirConfirm(contenido){
-
+function abrirConfirm(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -243,7 +224,7 @@ function abrirConfirm(contenido){
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -258,12 +239,6 @@ function abrirConfirm(contenido){
             }
         }
     });
-
-}*/
-
-function changeLink(){
-    $("#idLink").empty();
-    $("#idLink").append('<a href="acerca.html" class="nav-regular">Acerca de Mí</a>');
 }
 
 /*---------------------------------------------CARGA DE PRODUCTOS, ETAPAS Y CICLOS DE LA FICHA TÉCNICA-----------------------------------------*/
@@ -276,7 +251,7 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("tatbproductos.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
     ruta = fileSystem.root.toURL();
 }
 
@@ -324,14 +299,12 @@ function errorCargar_productos(err) {
 function cargar_relaciones_EtapasCiclo() 
 {
     var relacionesTemp=new Array();
-    var path = ruta + "tatbproductosetapa.json";
+    var path = ruta + "TATB_ProductosEtapa.json";
     var texto = "";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                relacionesCiclo.push(item.prodid+","+item.etapafenid);
-            });
+            relacionesCiclo.push(field.Prod_Id+","+field.EtapaFen_Id);
         });      
     });
 }
@@ -339,14 +312,12 @@ function cargar_relaciones_EtapasCiclo()
 function cargar_relaciones_partesPlanta() 
 {
     var relacionesTemp=new Array();
-    var path = ruta + "tatbproductosetapaplanta.json";
+    var path = ruta + "TATB_ProductosEtapaPlanta.json";
     var texto = "";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                relacionesPlanta.push(item.prodid+","+item.parteplantaid+","+item.etapafenid);
-            });
+            relacionesPlanta.push(field.Prod_Id+","+field.PartePlanta_Id+","+field.EtapaFen_Id);
         });
     });
 }
@@ -363,18 +334,16 @@ function cambioCheck(element){
 function cargar_EtapasCiclo(idproducto) 
 {
     
-    var path = ruta + "tatbetapasciclofenologico.json";
+    var path = ruta + "TATB_EtapasCicloFenologico2.json";
     var texto = "";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                for(var j = 0;j < relacionesCiclo.length - 1;j++){
-                    var temp = relacionesCiclo[j].split(",")
-                    if(temp[1] == field[x].etapafenid && temp[0] == idproducto)
-                    texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" onchange="cambioCheckEtapa(this)" name="ciclo" value="' + field[x].etapafenid + '" />' + field[x].etapafendesc + '</h3>';
-                }
-            });     
+            for(var j = 0;j < relacionesCiclo.length - 1;j++){
+                var temp = relacionesCiclo[j].split(",")
+                if(temp[1] == data[i].EtapaFen_Id && temp[0] == idproducto)
+                texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" onchange="cambioCheckEtapa(this)" name="ciclo" value="' + data[i].EtapaFen_Id + '" />' + data[i].EtapaFen_Desc + '</h3>';
+            }     
         }); 
         $("#ciclo").html(texto);
         $("#cicloFenImagenAyuda").css("display","inline-table");
@@ -391,7 +360,7 @@ function cambioCheckEtapa(element){
 
 function cargar_PartesPlanta(id) 
 {
-    var path = ruta + "tatbpartesplanta.json";
+    var path = ruta + "TATB_PartesPlanta2.json";
     var texto = "";
 
     cont = 0;
@@ -399,14 +368,12 @@ function cargar_PartesPlanta(id)
 
     $.getJSON("" + path + "", function(data) {   
         for(var j = 0;j < relacionesPlanta.length - 1;j++){
-        $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
+            $.each(data, function (i, field) {
                 var temp = relacionesPlanta[j].split(",")
-                if(temp[1] == field[x].parteplantaid && temp[0] == id_Producto && temp[2] == id_EtapaCiclo)
-                texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="parte"  value="' + field[x].parteplantaid + '" />' + field[x].parteplantadesc + '</h3>';
-            });
-        });      
-    }
+                if(temp[1] == data[i].PartePlanta_Id && temp[0] == id_Producto && temp[2] == id_EtapaCiclo)
+                texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="parte"  value="' + data[i].PartePlanta_Id + '" />' + data[i].PartePlanta_Desc + '</h3>';
+            });      
+        }
         $("#parte").html(texto);
     });
 }
@@ -414,7 +381,7 @@ function cargar_PartesPlanta(id)
 /*----------------------------------CARGA DEL LISTADO DE ORGANISMOS SEGUN LOS FILTROS SELECCIONADOS------------------------------------*/
 function Lista_Organismos() 
 {
-    var path = ruta + "tatborganismosprodetapla.json";
+    var path = ruta + "TATB_OrganismosProdEtaPla.json";
     var texto = "";
 
     var prodid = 0;
@@ -436,11 +403,9 @@ function Lista_Organismos()
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                if (field[x].prodid == prodid && field[x].etapafenid == etapafenid && field[x].parteplantaid == parteplantaid) {
-                    organismos.push(field[x].organismoid);
-                }
-            });
+            if (data[i].Prod_Id == prodid && data[i].EtapaFen_Id == etapafenid && data[i].PartePlanta_Id == parteplantaid) {
+                organismos.push(data[i].Organismo_Id);
+            }
         });      
         if (organismos !== null) {
             cargar_caracteristicas_ppales(organismos);
@@ -451,7 +416,7 @@ function Lista_Organismos()
 
 function cargar_caracteristicas_ppales(organismos){
     listadoCaracteristicas=[];
-    var path = ruta + "tatborganismosprodetapla.json";  
+    var path = ruta + "TATB_OrganismosProdEtaPla.json";  
     var prodid = 0;
     var etapafenid = 0;
     var parteplantaid = 0;
@@ -470,11 +435,9 @@ function cargar_caracteristicas_ppales(organismos){
     $.getJSON("" + path + "", function(data) 
     {  
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                if (field[x].prodid == prodid && field[x].etapafenid == etapafenid && field[x].parteplantaid == parteplantaid) {
-                    listadoCaracteristicas.push(item);
-                }
-            });
+            if (data[i].Prod_Id == prodid && data[i].EtapaFen_Id == etapafenid && data[i].PartePlanta_Id == parteplantaid) {
+                listadoCaracteristicas.push(field);
+            }
         });
         Cargar_ListaEnfermedades(organismos);
     })
@@ -482,7 +445,7 @@ function cargar_caracteristicas_ppales(organismos){
 
 function Cargar_ListaEnfermedades(organismos) 
 {
-    var path = ruta + "tatborganismos.json";
+    var path = ruta + "TATB_Organismos.json";
     var texto = "";
 
     var lista = $("#listadoEnfermedades");
@@ -491,22 +454,20 @@ function Cargar_ListaEnfermedades(organismos)
     $.getJSON("" + path + "", function(data) {  
         texto += '<h1 style="font-weight:bold;font-style:Verdana">Listado Organismos:</h1>'; 
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                for (var j = 0; j < organismos.length; j++) {
-                    if (organismos[j] === field[x].organismoid) 
-                    {
-                        caracteristicaPPal=sacar_caracteristica_ppal(organismos[j])
-                        texto += '<div class="decoration"></div>'+'<div style="padding-bottom:25px !important;">' +
-                                    '<h3 style="font-weight:bold;font-style:Verdana;text-align:center">' + field[x].organismodesc + '</h3>' +                                
-                                    '<h3 style="font-weight:bold;font-style:Verdana;text-align:left">' + caracteristicaPPal + '</h3>' +
-                                    '<a onclick="Detalle_Organismo('+field[x].organismoid+')" class="confirm"><div>' +
-                                        '<img src="'+ruta+field[x].organismoid+"_Organismo_0.jpg"+'" alt="img" style="border-radius:55%;width:150px;margin-left:auto;margin-right:auto">' +
-                                        '<h4 style="font-weight:bold;font-style:Verdana;text-align:center">Leer más</h4>' +
-                                    '</div></a>' + '<div class="decoration"></div>' +
-                                '</div>';
-                    }
-                };
-            });
+            for (var j = 0; j < organismos.length; j++) {
+                if (organismos[j] === data[i].Organismo_Id) 
+                {
+                    caracteristicaPPal=sacar_caracteristica_ppal(organismos[j])
+                    texto += '<div class="decoration"></div>'+'<div style="padding-bottom:25px !important;">' +
+                                '<h3 style="font-weight:bold;font-style:Verdana;text-align:center">' + data[i].Organismo_Desc + '</h3>' +                                
+                                '<h3 style="font-weight:bold;font-style:Verdana;text-align:left">' + caracteristicaPPal + '</h3>' +
+                                '<a onclick="Detalle_Organismo('+data[i].Organismo_Id+')" class="confirm"><div>' +
+                                    '<img src="'+ruta+data[i].Organismo_Id+"_Organismo_0.jpg"+'" alt="img" style="border-radius:55%;width:150px;margin-left:auto;margin-right:auto">' +
+                                    '<h4 style="font-weight:bold;font-style:Verdana;text-align:center">Leer más</h4>' +
+                                '</div></a>' + '<div class="decoration"></div>' +
+                            '</div>';
+                }
+            };
         });        
         $("#listadoEnfermedades").html(texto);        
         Mostrar_Listado();    
@@ -514,7 +475,7 @@ function Cargar_ListaEnfermedades(organismos)
 }
 
 function sacar_caracteristica_ppal(id_org){
-        var prodid = 0;
+    var prodid = 0;
     var etapafenid = 0;
     var parteplantaid = 0;
     var band=false;
@@ -533,9 +494,9 @@ function sacar_caracteristica_ppal(id_org){
     }); 
     var salida="";
     while(!band&&cont<listadoCaracteristicas.length){
-        if (listadoCaracteristicas[cont].prodid == prodid && listadoCaracteristicas[cont].etapafenid == etapafenid && listadoCaracteristicas[cont].parteplantaid == parteplantaid&&listadoCaracteristicas[cont].organismoid==id_org) 
+        if (listadoCaracteristicas[cont].Prod_Id == prodid && listadoCaracteristicas[cont].EtapaFen_Id == etapafenid && listadoCaracteristicas[cont].PartePlanta_Id == parteplantaid&&listadoCaracteristicas[cont].Organismo_Id==id_org) 
         {
-            salida=listadoCaracteristicas[cont].orgproetaplacaract;
+            salida=listadoCaracteristicas[cont].OrgProEtaPla_Caract;
             band=true;
         }else{
             cont++;
@@ -547,7 +508,7 @@ function sacar_caracteristica_ppal(id_org){
 /*----------------------------------CARGA DE CARACTERÍSTICAS PRINCIPALES DEL PRODUCTO, CICLO Y ETAPA SELECCIONADO------------------------------------*/
 function Detalle_Organismo(id_organismo)
 {
-    /*var windowWidth = $(window).width();
+    var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
     $('#content-alert').html('<p>La información contenida en este aplicativo es una guía que no reemplaza el acompañamiento del asistente técnico, dado que su aplicación depende de las condiciones específicas de cada área geográfica y por tanto su uso está bajo su responsabilidad</p>');
@@ -555,7 +516,7 @@ function Detalle_Organismo(id_organismo)
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -574,23 +535,11 @@ function Detalle_Organismo(id_organismo)
             },
             "Cerrar": function() {
                 $(this).dialog("close");
-                Mostrar_Listado();  
-                GoToTopOfSection();
+                //Mostrar_Listado();  
+                //GoToTopOfSection();
             }
         }
-    });*/
-
-    var conf = confirm("La información contenida en este aplicativo es una guía que no reemplaza el acompañamiento del asistente técnico, dado que su aplicación depende de las condiciones específicas de cada área geográfica y por tanto su uso está bajo su responsabilidad");
-    if (conf == true) {
-        $(".filtrosBusqueda").css("display", "none");
-        $("#listadoEnfermedades").css("display", "none");
-        cargarSecciones(id_organismo);
-        $("#detalle").css("display", "block");
-        GoToTopOfSection();
-    } else {
-        //Mostrar_Listado();
-        //GoToTopOfSection();
-    }
+    });
 }
 
 function GoToTopOfSection(){
@@ -601,65 +550,65 @@ function GoToTopOfSection(){
 
 function cargarSecciones(id_organismo){
     var nombre_cient = "";
-    var path = ruta + "tatborganismos.json";
+    var path = ruta + "TATB_Organismos.json";
     var img = "";
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                if(item.organismoid==id_organismo){
-                    $('#img_ppal').attr('src',ruta+item.organismoid+"_Organismo_0.jpg")
-                    var ficha_tecnica='<table cellspacing="0" class="table">';
 
-                    if(item.organismogenero.toUpperCase()!='NULL')
-                        nombre_cient="<em>"+item.organismogenero
+            if(field.Organismo_Id==id_organismo){
+                $('#img_ppal').attr('src',ruta+field.Organismo_Id+"_Organismo_0.jpg")
+                var ficha_tecnica='<table cellspacing="0" class="table">';
 
-                    if(item.organismoespecie.toUpperCase()!='NULL')
-                        nombre_cient+=" "+item.organismoespecie+"</em>"
+                if(field.Organismo_Genero.toUpperCase()!='NULL')
+                    nombre_cient="<em>"+field.Organismo_Genero
 
-                    if(item.organismodescriptor.toUpperCase()!='NULL')
-                        nombre_cient+=' '+item.organismodescriptor
-                    if(nombre_cient!="")
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Nombre cientifico:</td><td>'+ nombre_cient +'</td></tr>'
+                if(field.Organismo_Especie.toUpperCase()!='NULL')
+                    nombre_cient+=" "+field.Organismo_Especie+"</em>"
 
-                    if(item.organismoclase.toUpperCase()!='NULL'){
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Clase:</td><td>'+ item.organismoclase+'</td></tr>'   
-                    }
+                if(field.Organismo_Descriptor.toUpperCase()!='NULL')
+                    nombre_cient+=' '+field.Organismo_Descriptor
+                
+                if(nombre_cient!="")
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Nombre cientifico:</td><td>'+ nombre_cient +'</td></tr>'
 
-                    if(item.organismoorden.toUpperCase()!='NULL')
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Orden:</td><td>'+item.organismoorden+'</td></tr>'
+                if(field.Organismo_Clase.toUpperCase()!='NULL'){
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Clase:</td><td>'+ field.Organismo_Clase+'</td></tr>'   
+                }
 
-                    if(item.organismofamilia.toUpperCase()!='NULL')
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Familia:</td><td>'+ item.organismofamilia+'</td></tr>'
+                if(field.Organismo_Orden.toUpperCase()!='NULL')
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Orden:</td><td>'+field.Organismo_Orden+'</td></tr>'
 
-                    if(item.organismisubfamilia.toUpperCase()!='NULL')
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Subfamilia:</td><td>'+ item.organismisubfamilia+'</td></tr>'
-     
-                    if(item.organismotribu.toUpperCase()!='NULL')
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Tribu:</td><td>'+ item.organismotribu+'</td></tr>'
+                if(field.Organismo_Familia.toUpperCase()!='NULL')
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Familia:</td><td>'+ field.Organismo_Familia+'</td></tr>'
 
-                    if(item.organismogenero.toUpperCase()!='NULL')
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Genéro:</td><td><p style="font-style: italic;">'+item.organismogenero+'</p></td></tr>'
+                if(field.Organismi_SubFamilia.toUpperCase()!='NULL')
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Subfamilia:</td><td>'+ field.Organismi_SubFamilia+'</td></tr>'
+ 
+                if(field.Organismo_Tribu.toUpperCase()!='NULL')
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Tribu:</td><td>'+ field.Organismo_Tribu+'</td></tr>'
 
-                    if(item.organismoespecie.toUpperCase()!='NULL')
-                        ficha_tecnica+='<tr><td class="table-sub-title"> Especie:</td><td> <p style="font-style: italic;">'+item.organismoespecie+'</p></td></tr></table>'
+                if(field.Organismo_Genero.toUpperCase()!='NULL')
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Genéro:</td><td><p style="font-style: italic;">'+field.Organismo_Genero+'</p></td></tr>'
 
-                    if(item.organismocomun.toUpperCase()!='NULL')
-                        var nombre_comun='<h2>Nombre Común</h2><p>'+ item.organismocomun+'</p>'
-                        document.getElementById('div_nombre_ppal').innerHTML='<h2>'+ item.organismocomun+'</h2>';
+                if(field.Organismo_Especie.toUpperCase()!='NULL')
+                    ficha_tecnica+='<tr><td class="table-sub-title"> Especie:</td><td> <p style="font-style: italic;">'+field.Organismo_Especie+'</p></td></tr></table>'
 
-                    if(item.organismocomun.toUpperCase()!='NULL')
-                        var nombre_Cientifico='<h2>Nombre Científico</h2><p>'+ nombre_cient +'</p>'
-                    
-                    document.getElementById('div_nombre_Cientifico').innerHTML=nombre_Cientifico;
-                    cargarSubSecciones(item.organismoid);
-                } 
-            });
+                if(field.Organismo_Comun.toUpperCase()!='NULL')
+                    var nombre_comun='<h2>Nombre Común</h2><p>'+ field.Organismo_Comun+'</p>'
+                    document.getElementById('div_nombre_ppal').innerHTML='<h2>'+ field.Organismo_Comun+'</h2>';
+
+                if(field.Organismo_Comun.toUpperCase()!='NULL')
+                    var nombre_Cientifico='<h2>Nombre Científico</h2><p>'+ nombre_cient +'</p>'
+                
+                document.getElementById('div_nombre_Cientifico').innerHTML=nombre_Cientifico;
+                cargarSubSecciones(field.Organismo_Id);
+            }
         });
     });
 }
 
 function cargarSubSecciones(id_Organismo){
-    var path = ruta + "tatborganismosubsec.json";
+    var path = ruta + "TATB_OrganismosSubSec.json";
     var carac_grales="";
     var intro="";
     var geo="";
@@ -681,189 +630,215 @@ function cargarSubSecciones(id_Organismo){
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                if(item.organismoid==id_Organismo) {
-
-                    switch(item.subsecagroid){
-                        case 21:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                intro='<p>'+item.orgsubdesc+'</p><br />'
-                            }
-                            break;
+            if(field.Organismo_Id==id_Organismo) {
+                switch(field.SubSecAgro_Id){
+                    case 21:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            intro='<p>'+field.OrgSub_Desc+'</p><br />'
                         }
-                        case 22:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                geo='<p>'+item.orgsubdesc+'</p><br /><div class="portfolio-item-full-width pinchzoom" style="overflow:hidden"><img class="responsive-image" src="'+ruta+id_Organismo+'_Organismo_22.jpg" alt="" OnError="Error_Cargar()"></div>';
-                            }
-                            break;
+                        break;
+                    }
+                    case 22:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            geo='<p>'+field.OrgSub_Desc+'</p><br /><div class="portfolio-item-full-width pinchzoom" style="overflow:hidden"><img class="responsive-image" src="'+ruta+id_Organismo+'_Organismo_22.jpg" alt="" OnError="Error_Cargar()"></div>';
                         }
-                        case 31:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                Hospederos='<p>'+item.orgsubdesc+'</p><br />'
-                                $('#img_hospederos').attr('src',ruta+id_Organismo+"_Organismo_31.jpg")
-                                $('#img_hospederos').attr('OnError','Error_Cargar()')
-                            }
-                            break;
+                        break;
+                    }
+                    case 31:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            Hospederos='<p>'+field.OrgSub_Desc+'</p><br />'
+                            $('#img_hospederos').attr('src',ruta+id_Organismo+"_Organismo_31.jpg")
+                            $('#img_hospederos').attr('OnError','Error_Cargar()')
                         }
-                        case 32:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                como_alimenta='<p>'+item.orgsubdesc+'</p><br />'     
-                                $('#img_dano').attr('src',ruta+id_Organismo+"_Organismo_32.jpg")
-                                $('#img_dano').attr('OnError','Error_Cargar()')
-                            }
-                            break;  
+                        break;
+                    }
+                    case 32:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            como_alimenta='<p>'+field.OrgSub_Desc+'</p><br />'     
+                            $('#img_dano').attr('src',ruta+id_Organismo+"_Organismo_32.jpg")
+                            $('#img_dano').attr('OnError','Error_Cargar()')
                         }
-                        case 33:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                diseminacion='<p>'+item.orgsubdesc+'</p><br />' 
-                                $('#img_diseminacion').attr('src',ruta+id_Organismo+"_Organismo_33.jpg")
-                                $('#img_diseminacion').attr('OnError','Error_Cargar()')
-                            }
-                            break;  
+                        break;  
+                    }
+                    case 33:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            diseminacion='<p>'+field.OrgSub_Desc+'</p><br />' 
+                            $('#img_diseminacion').attr('src',ruta+id_Organismo+"_Organismo_33.jpg")
+                            $('#img_diseminacion').attr('OnError','Error_Cargar()')
                         }
-                        case 34:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                ciclo_vida='<p>'+item.orgsubdesc+'</p><br />'
-                                $('#img_ciclo').attr('src',ruta+id_Organismo+"_Organismo_34.jpg")
-                                $('#img_ciclo').attr('OnError','Error_Cargar()')
-                            }
-                            break;
+                        break;  
+                    }
+                    case 34:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            ciclo_vida='<p>'+field.OrgSub_Desc+'</p><br />'
+                            $('#img_ciclo').attr('src',ruta+id_Organismo+"_Organismo_34.jpg")
+                            $('#img_ciclo').attr('OnError','Error_Cargar()')
                         }
-                        case 35:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                comportamiento='<p>'+item.orgsubdesc+'</p><br />'
-                                $('#img_comportamiento').attr('src',ruta+id_Organismo+"_Organismo_35.jpg")
-                                $('#img_comportamiento').attr('OnError','Error_Cargar()')
-                            }
-                            break;      
+                        break;
+                    }
+                    case 35:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            comportamiento='<p>'+field.OrgSub_Desc+'</p><br />'
+                            $('#img_comportamiento').attr('src',ruta+id_Organismo+"_Organismo_35.jpg")
+                            $('#img_comportamiento').attr('OnError','Error_Cargar()')
                         }
-                        case 36:{
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                distribucion_espacial='<p>'+item.orgsubdesc+'</p><br />'
-                                $('#img_distribucion').attr('src',ruta+id_Organismo+"_Organismo_31.jpg")
-                                $('#img_distribucion').attr('OnError','Error_Cargar()')
-                            }
-                            break;      
+                        break;      
+                    }
+                    case 36:{
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            distribucion_espacial='<p>'+field.OrgSub_Desc+'</p><br />'
+                            $('#img_distribucion').attr('src',ruta+id_Organismo+"_Organismo_31.jpg")
+                            $('#img_distribucion').attr('OnError','Error_Cargar()')
                         }
-                        case 10: {
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                identificacion_prevencion=item.orgsubdesc+'<br />'
-                                $('#img_parametros').attr('src',ruta+id_Organismo+"_Organismo_10.jpg")
-                                $('#img_parametros').attr('OnError','Error_Cargar()')
-                            }
-                            break;
+                        break;      
+                    }
+                    case 10: {
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            identificacion_prevencion=field.OrgSub_Desc+'<br />'
+                            $('#img_parametros').attr('src',ruta+id_Organismo+"_Organismo_10.jpg")
+                            $('#img_parametros').attr('OnError','Error_Cargar()')
                         }
-                        case 41:
-                        {
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                medidas_prevencion='<p>'+item.orgsubdesc+'</p><br />'
-                                $('#img_prevencion').attr('src',ruta+id_Organismo+"_Organismo_41.jpg")
-                                $('#img_prevencion').attr('OnError','Error_Cargar()')
-                            }
+                        break;
+                    }
+                    case 41:
+                    {
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            medidas_prevencion='<p>'+field.OrgSub_Desc+'</p><br />'
+                            $('#img_prevencion').attr('src',ruta+id_Organismo+"_Organismo_41.jpg")
+                            $('#img_prevencion').attr('OnError','Error_Cargar()')
                         }
-                        case 42:
-                        {
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                metodos_control='<p>'+item.orgsubdesc+'</p><br />'
-                                $('#img_control').attr('src',ruta+id_Organismo+"_Organismo_42.jpg")
-                                $('#img_control').attr('OnError','Error_Cargar()')
-                            }
+                    }
+                    case 42:
+                    {
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            metodos_control='<p>'+field.OrgSub_Desc+'</p><br />'
+                            $('#img_control').attr('src',ruta+id_Organismo+"_Organismo_42.jpg")
+                            $('#img_control').attr('OnError','Error_Cargar()')
                         }
-                        case 50:
-                        {
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                listado_registros='<p>'+item.orgsubdesc +'</p><br /><div class="portfolio-item-full-width pinchzoom" style="overflow:hidden"><img class="responsive-image" src="'+ruta+id_Organismo+'_Organismo_50.jpg" alt="" OnError="Error_Cargar()"></div></div>'
-                            }
+                    }
+                    case 50:
+                    {
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            listado_registros='<p>'+field.OrgSub_Desc +'</p><br /><div class="portfolio-item-full-width pinchzoom" style="overflow:hidden"><img class="responsive-image" src="'+ruta+id_Organismo+'_Organismo_50.jpg" alt="" OnError="Error_Cargar()"></div></div>'
                         }
-                        case 60:
-                        {
-                            if(item.orgsubdesc.toUpperCase()!='NULL'){
-                                referencias_bibliograficas='<p>'+item.orgsubdesc +'</p><br /><div class="portfolio-item-full-width pinchzoom" style="overflow:hidden"><img class="responsive-image" src="'+ruta+id_Organismo+'_Organismo_60.jpg" alt="" OnError="Error_Cargar()"></div></div>'
-                            }
+                    }
+                    case 60:
+                    {
+                        if(field.OrgSub_Desc.toUpperCase()!='NULL'){
+                            referencias_bibliograficas='<p>'+field.OrgSub_Desc +'</p><br /><div class="portfolio-item-full-width pinchzoom" style="overflow:hidden"><img class="responsive-image" src="'+ruta+id_Organismo+'_Organismo_60.jpg" alt="" OnError="Error_Cargar()"></div></div>'
                         }
                     }
                 }
-            });
+            }
         });
+
         if(intro!="" && geo!=""){
+            document.getElementById('div_caracteristicas_grales').style.display = "block";
             document.getElementById('Descripcion_H').innerHTML=intro;
             document.getElementById('Dist_Geo_H').innerHTML=geo;
-        }
-        else if(intro!=""){
+                            
+        }else if(intro!=""){
+          
             document.getElementById('Descripcion_H').innerHTML=intro;
-            document.getElementById('Dist_Geo_p').innerHTML="";
+            document.getElementById('Descripcion_H').style.display = "block";
+            document.getElementById('Dist_Geo_p').style.display = "none";
         }else if(geo!=""){
+            
             document.getElementById('Dist_Geo_p').innerHTML=geo;
-            document.getElementById('Descripcion_H').innerHTML="";
+            document.getElementById('Dist_Geo_p').style.display = "block";
+            document.getElementById('Descripcion_H').style.display = "none";
+            
         }else{
-            document.getElementById('div_caracteristicas_grales').innerHTML="";
+            document.getElementById('div_caracteristicas_grales').style.display = "none";
         }
         if(Hospederos!=""||como_alimenta!=""||diseminacion!=""||ciclo_vida!=""||comportamiento!=""||distribucion_espacial!=""||identificacion_prevencion!=""){
-            
+            document.getElementById('Biologia_Habitat_ppal').style.display = "block";
             if(Hospederos!=""){
                 document.getElementById('Hospederos_H').innerHTML=Hospederos;
+                document.getElementById('Hospederos_p').style.display = "block";
             }else{
-                document.getElementById('Hospederos_P').innerHTML="";
+                document.getElementById('Hospederos_p').style.display = "none";
             }
             if(como_alimenta!=""){
                 document.getElementById('como_alimenta_H').innerHTML=como_alimenta;
+                document.getElementById('como_alimenta_P').style.display = "block";
             }else{
-                document.getElementById('como_alimenta_P').innerHTML="";
+                document.getElementById('como_alimenta_P').style.display = "none";
             }
             if(diseminacion!=""){
                 document.getElementById('diseminacion_H').innerHTML=diseminacion;
+                document.getElementById('diseminacion_P').style.display = "block";
             }else{
-                document.getElementById('diseminacion_P').innerHTML="";
+                document.getElementById('diseminacion_P').style.display = "none";
             }
             if(ciclo_vida!=""){
                 document.getElementById('ciclo_vida_H').innerHTML=ciclo_vida;
+                document.getElementById('ciclo_vida_P').style.display = "block";
             }else{
-                document.getElementById('ciclo_vida_P').innerHTML="";
+                document.getElementById('ciclo_vida_P').style.display = "none";
             }
             if(comportamiento!=""){
                 document.getElementById('comportamiento_H').innerHTML=comportamiento;
+                document.getElementById('comportamiento_P').style.display = "block";
             }else{
-                document.getElementById('comportamiento_P').innerHTML=comportamiento;
+                document.getElementById('comportamiento_P').style.display = "none";
             }
             if(distribucion_espacial!=""){
                 document.getElementById('distribucion_espacial_H').innerHTML=distribucion_espacial;
+                document.getElementById('distribucion_espacial_P').style.display = "block";
             }else{
-                document.getElementById('distribucion_espacial_P').innerHTML="";
+                document.getElementById('distribucion_espacial_P').style.display = "none";
             }       
         }else{
-            document.getElementById('Biologia_Habitat_ppal').innerHTML="";
+            document.getElementById('Biologia_Habitat_ppal').style.display = "none";
         }
         if(metodos_control!="" && medidas_prevencion!=""){
+            document.getElementById('Estrategias_Manejo_ppal').style.display = "block";
             document.getElementById('Prevencion_H').innerHTML=medidas_prevencion;
             document.getElementById('control_H').innerHTML=metodos_control;
         }else if(metodos_control!=""){
-            document.getElementById('Prevencion_P').innerHTML="";
+            document.getElementById('Prevencion_P').style.display = "none";
             document.getElementById('control_H').innerHTML=metodos_control;
+            document.getElementById('control_H').style.display = "block";
         }else if(medidas_prevencion!=""){
             document.getElementById('Prevencion_P').innerHTML=medidas_prevencion;
-            document.getElementById('control_H').innerHTML="";
+            document.getElementById('control_H').style.display = "none";
+            document.getElementById('Prevencion_P').style.display = "block";
         }else{
-            document.getElementById('Estrategias_Manejo_ppal').innerHTML="";
+            document.getElementById('Estrategias_Manejo_ppal').style.display = "none";
         }    
 
         if(referencias_bibliograficas!=""){
+            document.getElementById('bibliografia_P').style.display = "block";
             document.getElementById('bibliografia_H').innerHTML='<p>'+referencias_bibliograficas +'</p>';
         }else{
-            document.getElementById('bibliografia_P').innerHTML=""; 
+            document.getElementById('bibliografia_P').style.display = "none";
         }
 
         if(listado_registros!=""){
             document.getElementById('registros_H').innerHTML='<h2>Listado de registros nacionales químicos de uso agrícola</h2>'+listado_registros+''; 
+            document.getElementById('registros_P').style.display = "block";
         }else{
-            document.getElementById('registros_P').innerHTML=""; 
-        }
-        
+            document.getElementById('registros_P').style.display = "none";
+        } 
+
         if(identificacion_prevencion!=""){
             document.getElementById('parametros_H').innerHTML=identificacion_prevencion;
+            document.getElementById('parametros_P').style.display = "block";
         }else{
-            document.getElementById('parametros_P').innerHTML="";
-        }      
+            document.getElementById('parametros_P').style.display = "none";
+        }
     });
+}
+
+function Error_Cargar() {
+    window.event.srcElement.style.display = "None";
+}
+
+function abrirImgCiclo()
+{
+    var rutaImagen = ruta + Id_Producto_Seleccionado + "_Ciclo_Fen.jpg";
+    abrirModalCiclo(rutaImagen);
 }
 
 function Mostrar_Listado()

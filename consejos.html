@@ -23,6 +23,8 @@
 <link href="styles/owl.theme.css"       rel="stylesheet" type="text/css">
 <link href="styles/swipebox.css"         rel="stylesheet" type="text/css">
 <link href="styles/colorbox.css"         rel="stylesheet" type="text/css">
+<link href="styles/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="styles/general.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
@@ -34,6 +36,7 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/framework.js"></script>
 <script type="text/javascript" src="scripts/framework.launcher.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="scripts/menuHeight.js"></script>
 <script type="text/javascript" src="scripts/consejos.js"></script>
@@ -59,6 +62,11 @@
 
 <body onload="onLoad()">
 
+<div id="div-confirm" style="display: none">
+    <div id="content-alert">
+    </div>
+</div>
+
 <div id="preloader">
     <div id="status">
         <p class="center-text">
@@ -71,19 +79,19 @@
 <div class="all-elements">
     <div id="sidebar" class="page-sidebar">
         <div class="page-sidebar-scroll">
-            <div class="sidebar-content-background">
+            <div id="contentMenu" class="sidebar-content-background">
                 <div class="sidebar-section">
                     <a href="#" class="sidebar-close"></a>
                     <em>Menu</em>
                 </div>
                 <div class="sidebar-decoration"></div>         
-                <div class="sidebar-logo"></div>              
-                                 
+                <a href="#" class="sidebar-logo"></a>              
+                <div class="sidebar-decoration"></div>                   
                 
                 <div class="sidebar-navigation">     
                      
                     <div id="idLink" class="nav-item">
-                        <a href="index.html" class="active-nav">Acerca de mí</a>
+                        <a href="index.html" class="nav-regular">Acerca de mí</a>
                     </div>
                     
                     <div class="nav-item">
@@ -114,9 +122,9 @@
                 </div>
                 
                 <div class="sidebar-decoration"></div>
-                <div class="sidebar-logo-footer"></div>              
-
                 
+                <a href="#" class="sidebar-logo-footer"></a>
+                <!--<p class="sidebar-copyright">Copyright 2013. All rights reserved</p>-->
                 
             </div>
         </div>
@@ -175,120 +183,13 @@
             <!-- IMAGEN INFERIOR CONTENEDOR DE CONSEJOS -->
             <figure style="position:absolute;margin-top:-76px;right:0">
                 <img src="images/dr-agro/icono-gafas-dr-agro.png" style="width:120px">
-            </figure>   
-
-
-
-
-
-            <!-- <div class="container no-bottom">
-                <p>
-                    This is a google maps embed code, simple to add, simple to use, no complications! You can also embed bing maps using the same method!
-                    The contact form is simply powered by PHP and AJAX, so the page won't refresh after sending a message! It's very easy to edit, one single PHP 
-                    file and one address that needs replacing with yours!
-                </p>
-            </div> -->
-            <!-- <div class="decoration"></div> -->
-        
-            <!-- <div class="maps-container">
-                <iframe class="responsive-image maps" src="https://maps.google.com/?ie=UTF8&amp;ll=47.595131,-122.330414&amp;spn=0.006186,0.016512&amp;t=h&amp;z=17&amp;output=embed"></iframe>
-            </div> -->
-            
-            <!-- <div class="decoration"></div> -->
-        
-            <!-- <div class="one-half-responsive">
-                <h4>Send us an email!</h4>
-                <p>Use the form to send us a message, it's AJAX and PHP powered and it's easy to use!</p>
-                <div class="container no-bottom">
-                    <div class="contact-form no-bottom"> 
-                        <div class="formSuccessMessageWrap" id="formSuccessMessageWrap">
-                            <div class="big-notification green-notification">
-                                <h3 class="uppercase">Message Sent </h3>
-                                <a href="#" class="close-big-notification">x</a>
-                                <p>Your message has been successfuly sent. Please allow up to 48 hours for a reply! Thank you!</p>
-                            </div>
-                        </div>
-                    
-                        <form action="php/contact.php" method="post" class="contactForm" id="contactForm">
-                            <fieldset>
-                                <div class="formValidationError" id="contactNameFieldError">
-                                    <div class="static-notification-red tap-dismiss-notification">
-                                        <p class="center-text uppercase">Name is required!</p>
-                                    </div>
-                                </div>             
-                                <div class="formValidationError" id="contactEmailFieldError">
-                                    <div class="static-notification-red tap-dismiss-notification">
-                                        <p class="center-text uppercase">Mail address required!</p>
-                                    </div>
-                                </div> 
-                                <div class="formValidationError" id="contactEmailFieldError2">
-                                    <div class="static-notification-red tap-dismiss-notification">
-                                        <p class="center-text uppercase">Mail address must be valid!</p>
-                                    </div>
-                                </div> 
-                                <div class="formValidationError" id="contactMessageTextareaError">
-                                    <div class="static-notification-red tap-dismiss-notification">
-                                        <p class="center-text uppercase">Message field is empty!</p>
-                                    </div>
-                                </div>   
-                                <div class="formFieldWrap">
-                                    <label class="field-title contactNameField" for="contactNameField">Name:<span>(required)</span></label>
-                                    <input type="text" name="contactNameField" value="" class="contactField requiredField" id="contactNameField"/>
-                                </div>
-                                <div class="formFieldWrap">
-                                    <label class="field-title contactEmailField" for="contactEmailField">Email: <span>(required)</span></label>
-                                    <input type="text" name="contactEmailField" value="" class="contactField requiredField requiredEmailField" id="contactEmailField"/>
-                                </div>
-                                <div class="formTextareaWrap">
-                                    <label class="field-title contactMessageTextarea" for="contactMessageTextarea">Message: <span>(required)</span></label>
-                                    <textarea name="contactMessageTextarea" class="contactTextarea requiredField" id="contactMessageTextarea"></textarea>
-                                </div>
-                                <div class="formSubmitButtonErrorsWrap">
-                                    <input type="submit" class="buttonWrap button button-green contactSubmitButton" id="contactSubmitButton" value="SUBMIT" data-formId="contactForm"/>
-                                </div>
-                            </fieldset>
-                        </form>       
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="decoration hide-if-responsive"></div>
-            <div class="one-half-responsive last-column">
-                <div class="container no-bottom">
-                    <h4>Contact Information</h4>
-                    <p>
-                        <strong>Postal Information</strong><br>
-                        PO Box 16122 Collins Street West<br>
-                        Victoria 8007 Australia
-                    </p>
-                    <p>
-                        <strong>Envato Headquarters</strong><br>
-                        121 King Street, Melbourne <br>
-                        Victoria 3000 Australia
-                    </p>
-                    <p>
-                        <strong>Envato Pty Ltd</strong><br>
-                        ABN 11 119 159 741
-                    </p>
-                    <p>
-                        <strong>Contact Information:</strong><br>
-                        <a href="#" class="contact-call">Phone: + 123 456 7890</a>
-                        <a href="#" class="contact-text">Message: + 123 456 7890</a>
-                        <a href="#" class="contact-mail">Email: mail@doamin.com</a>
-                        <a href="#" class="contact-facebook">Fanpage: enabled.labs</a>
-                        <a href="#" class="contact-twitter">Twitter: @iEnabled</a>
-                    </p>
-                </div>
-            </div> -->
+            </figure>
                             
             <div class="decoration"></div>    
                 
             <div class="container">         
-                <!-- <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a> -->
-                    <a href="#" class="goup-footer"></a>
-                   <!--  <a href="#" class="twitter-footer"></a>
-                </div> -->
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
+                <a href="#" class="goup-footer"></a>
+                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>       
             </div>
         </div> 
         
@@ -298,34 +199,6 @@
 
 </body>
 </html>
-
-<!-- SECCIÓN DE SCRIPTS -->
-<script>
-//     var applaunchCount = window.localStorage.getItem('launchCount');
-//     if(!applaunchCount) {
-//         abrirAlert('Para acceder a esta sección por primera vez es necesario descargar información de internet, una vez tenga conectividad, por favor reinicie la aplicación')
-       
-//         document.location.href="index.html";
-//     }    
-
-// function mostrar(){
-//     $("#sidebar").css("display","block");
-//     $('contentMenu').removeClass("scroll");   
-  
-// }
-
-// function esconderMenu(){    
-//     // $(this).css("display","none");
-//     $('contentMenu').removeClass("scroll");   
-//     // isMenuVisible();   
-// }
-
-// function showScroll(){
-//   var d = document.getElementById("contentMenu");
-//   d.className = d.className + " scroll";  
-// }
-// 
-</script>
 
 
 

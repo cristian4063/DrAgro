@@ -14,6 +14,11 @@ $(document).ready(function() {
 
 });
 
+function changeLink(){
+    $("#idLink").empty();
+    $("#idLink").append('<a href="acerca.html" class="nav-regular">Acerca de Mí</a>');
+}
+
 var ruta = "";
 
 function onLoad() {
@@ -25,7 +30,7 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("tatbproductos.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
     ruta = fileSystem.root.toURL();
 }
 
@@ -55,15 +60,12 @@ function cargar_lista_productos(tx) {
 
 function crear_lista_productos(tx, results) {
     var len = results.rows.length;
-    var path = ruta + "tatbproductos.json";
+    var path = ruta + "TATB_Productos2.json";
     var texto = "";
 
     $.getJSON("" + path + "", function(data) { 
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ x +'" name="titulo"><input type="checkbox" id="'+field[x].prodid+'" name="producto" value="' + field[x].prodid + '_' + field[x].proddesc + ' "/>'+ field[x].proddesc +'</h3>';
-            });
-            //texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ i +'" name="titulo"><input type="checkbox" id="'+data[i].prodid+'" name="producto" value="' + data[i].prodid + '_' + data[i].proddesc + ' "/>'+ data[i].proddesc +'</h3>';
+            texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ i +'" name="titulo"><input type="checkbox" id="'+data[i].Prod_Id+'" name="producto" value="' + data[i].Prod_Id + '_' + data[i].Prod_Desc + ' "/>'+ data[i].Prod_Desc +'</h3>';
         }); 
 
         $("#producto").html(texto);
@@ -99,11 +101,6 @@ function fail(evt) {
     console.log(evt.target.error.code);
 }
 
-function changeLink(){
-    $("#idLink").empty();
-    $("#idLink").append('<a href="acerca.html" class="nav-regular">Acerca de Mí</a>');
-}
-
 /*---------------------------------------------DESCARGA DE CULTIVOS SELECCIONADOS-----------------------------------------*/
 function guardarListaProductos() {
 
@@ -120,8 +117,7 @@ function guardarListaProductos() {
 
     }
     else {
-        //abrirAlert("Debe tener conexión a internet");
-        alert("Debe tener conexión a internet");
+        abrirAlert("Debe tener conexión a internet");
     }
 }
 
@@ -148,19 +144,16 @@ function GuardarProducto(tx) {
 function BuscarImagenes() 
 {
     var ruta = window.localStorage.getItem("ruta");
-    var path = ruta + "tatbproductoorganismofoto.json";
+    var path = ruta + "TATB_ProductoOrganismoFoto.json";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                for (var j = 0; j < listaProductos.length; j++) {
-                    if(item.prodid == listaProductos[j])
-                    {
-                        listaImagenes.push(item.organismofoto);
-                    }
-                };
-                //texto += '<h3 style="margin-left:20px;font-family:Verdana;" id="prod_'+ x +'" name="titulo"><input type="checkbox" id="'+field[x].prodid+'" name="producto" value="' + field[x].prodid + '_' + field[x].proddesc + ' "/>'+ field[x].proddesc +'</h3>';
-            });
+            for (var j = 0; j < listaProductos.length; j++) {
+                if(field.Prod_Id == listaProductos[j])
+                {
+                    listaImagenes.push(field.Organismo_Foto);
+                }
+            };
         });
         downloadImages();
     });
@@ -172,8 +165,7 @@ function downloadImages() {
         $("#status").fadeOut();
         $("#preloader").fadeOut();
         listaProductos = [];
-        //abrirConfirm("Descarga de informacíon exitosa!!");
-        alert("Descarga de informacíon exitosa!!");
+        abrirConfirm("Descarga de informacíon exitosa!!");
 
         return;
     }
@@ -210,7 +202,8 @@ function fail(error) {
     console.log(error.code);
 }
 
-/*function abrirAlert(contenido){
+function abrirAlert(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -219,6 +212,7 @@ function fail(error) {
         modal: true,
         draggable: false,
         resizable: false,
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -234,7 +228,8 @@ function fail(error) {
     });
 }
 
-function abrirConfirm(contenido){
+function abrirConfirm(contenido)
+{
     var windowWidth = $(window).width();
     var windowHeight = $(window).height();
     var ancho=windowWidth-(windowWidth/10);
@@ -243,7 +238,7 @@ function abrirConfirm(contenido){
         modal: true,
         draggable: false,
         resizable: false,
-        title: 'Advertencia',
+        title: 'Aviso',
         minWidth:ancho,
         my: "center",
         at: "center",
@@ -258,4 +253,4 @@ function abrirConfirm(contenido){
             }
         }
     });
-}*/
+}

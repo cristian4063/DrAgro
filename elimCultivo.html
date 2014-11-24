@@ -23,6 +23,8 @@
 <link href="styles/owl.theme.css" 		rel="stylesheet" type="text/css">
 <link href="styles/swipebox.css"		 rel="stylesheet" type="text/css">
 <link href="styles/colorbox.css"		 rel="stylesheet" type="text/css">
+<link href="styles/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="styles/general.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
@@ -34,6 +36,7 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/framework.js"></script>
 <script type="text/javascript" src="scripts/framework.launcher.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="scripts/bd.js"></script>
 <script type="text/javascript" src="scripts/menuHeight.js"></script>
@@ -48,6 +51,11 @@ function swapStyleSheet(sheet){
 </head>
 <body onload="cargar_Productos()">
 
+<div id="div-confirm" style="display: none">
+    <div id="content-alert">
+    </div>
+</div>
+
 <div id="preloader">
 	<div id="status">
     	<p id="loading" class="center-text">
@@ -60,19 +68,19 @@ function swapStyleSheet(sheet){
 <div class="all-elements">
     <div id="sidebar" class="page-sidebar">
         <div class="page-sidebar-scroll">
-            <div class="sidebar-content-background">
-                <div class="sidebar-section">
+			<div id="contentMenu" class="sidebar-content-background">
+            	<div class="sidebar-section">
                     <a href="#" class="sidebar-close"></a>
                     <em>Menu</em>
                 </div>
                 <div class="sidebar-decoration"></div>         
-                <div class="sidebar-logo"></div>              
-                                 
+                <a href="#" class="sidebar-logo"></a>              
+                <div class="sidebar-decoration"></div>                   
                 
                 <div class="sidebar-navigation">     
                      
                     <div id="idLink" class="nav-item">
-                        <a href="index.html" class="active-nav">Acerca de mí</a>
+                        <a href="index.html" class="nav-regular">Acerca de mí</a>
                     </div>
                     
                     <div class="nav-item">
@@ -103,9 +111,9 @@ function swapStyleSheet(sheet){
                 </div>
                 
                 <div class="sidebar-decoration"></div>
-                <div class="sidebar-logo-footer"></div>              
-
                 
+                <a href="#" class="sidebar-logo-footer"></a>
+                <!--<p class="sidebar-copyright">Copyright 2013. All rights reserved</p>-->
                 
             </div>
         </div>
@@ -155,210 +163,12 @@ function swapStyleSheet(sheet){
             
             <div class="decoration"></div>
 
-            <div class="container">         
-                <!-- <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a> -->
-                    <a href="#" class="goup-footer"></a>
-                   <!--  <a href="#" class="twitter-footer"></a>
-                </div> -->
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
-            </div>
-                                
-            <!--<div class="container">
-                <div>                    
-                    <a href="#" class="goup-footer"></a>                    
-                </div>
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
-            </div>-->
-
-        </div> 
-        
-    </div>
-
-    <!--<div id="content" class="page-content">   
-    
-        <div class="content-controls">
-        	<a href="#" class="deploy-sidebar"></a>
-            <em>HOMEPAGE</em>
-        </div>
-         
-        <div class="content">
-			<div class="decoration"></div>
-            <div class="content-header">
-            	<a href="#" class="content-logo"></a>
-                <a href="#" class="content-twitter"></a>
-                <a href="#" class="content-facebook"></a>       
-            </div>
-
             <div class="container">
-                <div class="slider-controls" data-snap-ignore="true">                
-                    <div>
-                        <img src="images/general-nature/3.jpg" class="responsive-image" alt="img">
-                        <p class="title-slider-caption">
-                            <strong>Welcome</strong>
-                            <em>We make your mobile and tablet rock!</em>
-                        </p>
-                    </div>
-                
-                    <div>
-                        <img src="images/general-nature/2.jpg" class="responsive-image" alt="img">
-                        <p class="small-slider-caption">A small caption</p>
-                    </div>
-
-                    <div>
-                        <img src="images/general-nature/1.jpg" class="responsive-image" alt="img">
-                        <p class="title-slider-caption">
-                            <strong>A caption title</strong>
-                            <em>A caption text and what not!</em>
-                        </p>
-                    </div>
-                </div>
-                <a href="#" class="next-slider"></a>
-                <a href="#" class="prev-slider"></a>
+                <a href="#" class="goup-footer"></a>
+                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
             </div>
-            <div class="decoration"></div>
-            <div class="container no-bottom">
-            	<h4>Welcome</h4>
-                <p>Sitebar is a multi-purpose creative page with a unique sidebar navigation to pump out the awesome sauce on your mobile device!</p>
-            </div>
-
-			<div class="decoration"></div>
-            
-            <div class="container no-bottom">
-            	<h4>Services we provide</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisc ing elit. In adipiscing sem vel lorem elementum.</p>
-            </div>
-            
-    		<div class="container">
-                <a href="#" class="next-quote"></a>
-                <a href="#" class="prev-quote"></a>
-                <div class="quote-slider" data-snap-ignore="true">
-                    <div>
-                        <div class="services-item">
-                        	<h4>Elite Author</h4>
-                        	<div class="overlay dark-overlay"></div>
-                            <img src="images/general-nature/3s.jpg" alt="img">
-                            <strong>We love quotes, and sometimes it's annoying to see tons of them that you need to scroll to!</strong>
-                       		<a href="#" class="button button-dark center-button">Button One</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="services-item">
-                        	<h4>Mobile Web</h4>
-                        	<div class="overlay red-overlay"></div>
-                            <img src="images/general-nature/3s.jpg" alt="img">
-                            <strong>We love quotes, and sometimes it's annoying to see tons of them that you need to scroll to!</strong>
-                       		<a href="#" class="button button-red center-button">Button One</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="services-item">
-                        	<h4>Mobile Web</h4>
-                        	<div class="overlay blue-overlay"></div>
-                            <img src="images/general-nature/4s.jpg" alt="img">
-                            <strong>We love quotes, and sometimes it's annoying to see tons of them that you need to scroll to!</strong>
-                        	<a href="#" class="button button-blue center-button">Button Two</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="services-item">
-                        	<h4>CSS3 Code</h4>
-                        	<div class="overlay yellow-overlay"></div>
-                            <img src="images/general-nature/5s.jpg" alt="img">
-                            <strong>We love quotes, and sometimes it's annoying to see tons of them that you need to scroll to!</strong>
-                        	<a href="#" class="button button-yellow center-button">Button Three</a>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="services-item">
-                        	<h4>PSD Included</h4>
-                        	<div class="overlay green-overlay"></div>
-                            <img src="images/general-nature/6s.jpg" alt="img">
-                            <strong>We love quotes, and sometimes it's annoying to see tons of them that you need to scroll to!</strong>
-                        	<a href="#" class="button button-green center-button">Button Four</a>
-                        </div>
-                    </div>
-                </div>
-            </div>      		
-			<div class="decoration"></div>
-            
-            <div class="container no-bottom">
-            	<div class="one-half-responsive">
-                	<p class="quote-item">
-                    	<img src="images/general-nature/6s.jpg" alt="img">
-                        <strong>Light weight</strong><br><br>
-                        Great product and awesome help to get for this! Many thanks mate!
-                    </p>
-                </div>
-                <div class="one-half-responsive last-column">
-                	<p class="quote-item">
-                    	<img src="images/general-nature/2s.jpg" alt="img">
-                    	<strong>Ellegant design</strong><br><br>
-                        Fast support, awesome file, good  docs, this rocks! Thank you for all!
-                    </p>                
-                </div>
-            	<div class="one-half-responsive">
-                	<p class="quote-item">
-                    	<img src="images/general-nature/3s.jpg" alt="img">
-                        <strong>Coded for power</strong><br><br>
-                        Thanks for the awesome item, just what I was searching for all along!
-                    </p>
-                </div>
-                <div class="one-half-responsive last-column">
-                	<p class="quote-item">
-                    	<img src="images/general-nature/4s.jpg" alt="img">
-                        <strong>Documented for all</strong><br><br>
-                        Fast loading, great support, easy to use, all I asked for!
-                    </p>                
-                </div>
-            </div>           
-            <div class="decoration"></div>  
-
-            <div class="container no-bottom">
-            	<h4>Show off your works!</h4>
-                <p>In an awesome thumbnail gallery that's made to shine and works flawlessly with swipe ability too!</p>
-            </div>
-            <div class="container no-bottom">
-                <ul class="gallery round-thumb">
-                    <li>
-                        <a class="swipebox" href="images/gallery/full/1.jpg" title="An image caption!">
-                        <img src="images/general-nature/1s.jpg" alt="img" /></a>
-                    </li>
-                    <li>
-                        <a class="swipebox" href="images/gallery/full/2.jpg" title="It can change!">
-                        <img src="images/general-nature/2s.jpg" alt="img" /></a>
-                    </li>
-                    <li>
-                        <a class="swipebox" href="images/gallery/full/3.jpg" title="To be whatever you want!">
-                        <img src="images/general-nature/3s.jpg" alt="img" /></a>
-                    </li>
-                    <li>
-                        <a class="swipebox" href="images/gallery/full/1.jpg" title="It's connected to the href!">
-                        <img src="images/general-nature/4s.jpg" alt="img" /></a>
-                    </li>
-                    <li>
-                        <a class="swipebox" href="images/gallery/full/2.jpg" title="Easy to change and edit!">
-                        <img src="images/general-nature/5s.jpg" alt="img" /></a>
-                    </li>
-                    <li>
-                        <a class="swipebox" href="images/gallery/full/3.jpg" title="What an awesome gallery!">
-                        <img src="images/general-nature/6s.jpg" alt="img" /></a>
-                    </li>
-                </ul>   
-            </div>
-            <div class="decoration"></div>
-            
-        	<div class="container">
-                <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a>
-                    <a href="#" class="goup-footer"></a>
-                    <a href="#" class="twitter-footer"></a>
-                </div>
-                <p class="copyright uppercase center-text no-bottom">Copyright 2013<br> All rights reserved</p>        
-			</div>
-		</div>
-        
-        </div>-->          
+        </div> 
+    </div>         
     </div>  
 </div>
 

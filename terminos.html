@@ -34,10 +34,22 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/framework.js"></script>
 <script type="text/javascript" src="scripts/framework.launcher.js"></script>
+<script type="text/javascript" src="scripts/menuHeight.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+      var applaunchCount = window.localStorage.getItem('launchCount');
+      
+      if(applaunchCount) {
+          changeLink();
+      }
 
-<!-- SCRIPTS EQUIPO UX -->
-  <script type="text/javascript" src="scripts/menuHeight.js"></script>
+  });
 
+  function changeLink(){
+      $("#idLink").empty();
+      $("#idLink").append('<a href="acerca.html" class="nav-regular">Acerca de Mí</a>');
+  }
+</script>
 
 </head>
 <body>
@@ -54,19 +66,19 @@
 <div class="all-elements">
     <div id="sidebar" class="page-sidebar">
         <div class="page-sidebar-scroll">
-            <div class="sidebar-content-background">
-                <div class="sidebar-section">
+			<div id="contentMenu" class="sidebar-content-background">
+            	<div class="sidebar-section">
                     <a href="#" class="sidebar-close"></a>
                     <em>Menu</em>
                 </div>
                 <div class="sidebar-decoration"></div>         
-                <div class="sidebar-logo"></div>              
-                                 
+                <a href="#" class="sidebar-logo"></a>              
+                <div class="sidebar-decoration"></div>                   
                 
                 <div class="sidebar-navigation">     
                      
                     <div id="idLink" class="nav-item">
-                        <a href="index.html" class="active-nav">Acerca de mí</a>
+                        <a href="index.html" class="nav-regular">Acerca de mí</a>
                     </div>
                     
                     <div class="nav-item">
@@ -97,9 +109,9 @@
                 </div>
                 
                 <div class="sidebar-decoration"></div>
-                <div class="sidebar-logo-footer"></div>              
-
                 
+                <a href="#" class="sidebar-logo-footer"></a>
+                <!--<p class="sidebar-copyright">Copyright 2013. All rights reserved</p>-->
                 
             </div>
         </div>
@@ -125,13 +137,9 @@
             <div class="decoration"></div> 
                 
             <div class="container">         
-                <!-- <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a> -->
-                    <a href="#" class="goup-footer"></a>
-                   <!--  <a href="#" class="twitter-footer"></a>
-                </div> -->
+                <a href="#" class="goup-footer"></a>
                 <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
-            </div>
+			</div>
 		</div> 
         
         </div>           

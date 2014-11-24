@@ -90,7 +90,7 @@ body {
 	left:0px;	
 }
 
-.sidebar-logo{
+/*.sidebar-logo{
 	background-image:url(../images/misc/logo-sidebar.png);
 	background-repeat:no-repeat;
 	background-size:187px 50px;
@@ -100,18 +100,30 @@ body {
 	margin-left:20px;
 	margin-top:20px;
 	margin-bottom:20px;
+}*/
+
+.sidebar-logo {
+	background-image: url(../images/misc/logo-dr-agro.png);
+	background-repeat: no-repeat;
+	background-size: 187px 70px;
+	width: 187px;
+	height: 70px;
+	display: block;
+	margin-left: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
-.sidebar-logo-footer{
-	background-image:url(../images/misc/logo-corpoica-footer.png);
-	background-repeat:no-repeat;
-	background-size:187px 60px;
-	width:187px ;
-	height:60px;	
-	display:block;
-	margin-left:28px;
-	margin-top:20px;
-	margin-bottom:20px;
+.sidebar-logo-footer {
+	background-image: url(../images/misc/logo-corpoica.png);
+	background-repeat: no-repeat;
+	background-size: 187px 70px;
+	width: 187px;
+	height: 70px;
+	display: block;
+	margin-left: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .sidebar-navigation{

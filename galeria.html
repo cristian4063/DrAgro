@@ -23,6 +23,8 @@
 <link href="styles/owl.theme.css" 		rel="stylesheet" type="text/css">
 <link href="styles/swipebox.css"		 rel="stylesheet" type="text/css">
 <link href="styles/colorbox.css"		 rel="stylesheet" type="text/css">
+<link href="styles/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="styles/general.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jquery-ui.js"></script>
@@ -35,12 +37,18 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/framework.js"></script>
 <script type="text/javascript" src="scripts/framework.launcher.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="scripts/menuHeight.js"></script>
 <script type="text/javascript" src="scripts/galeria.js"></script>
 
 </head>
 <body onload="onLoad()">
+
+<div id="div-confirm" style="display: none">
+    <div id="content-alert">
+    </div>
+</div>
 
 <div id="preloader">
 	<div id="status">
@@ -51,21 +59,21 @@
 </div>
 
 <div class="all-elements">
-    <div id="sidebar" class="page-sidebar">
+    <div id="sidebar" class="page-sidebar" style="height:100% !important;">
         <div class="page-sidebar-scroll">
-            <div class="sidebar-content-background">
-                <div class="sidebar-section">
+			<div id="contentMenu" class="sidebar-content-background">
+            	<div class="sidebar-section">
                     <a href="#" class="sidebar-close"></a>
                     <em>Menu</em>
                 </div>
                 <div class="sidebar-decoration"></div>         
-                <div class="sidebar-logo"></div>              
-                                 
+                <a href="#" class="sidebar-logo"></a>              
+                <div class="sidebar-decoration"></div>                   
                 
                 <div class="sidebar-navigation">     
                      
                     <div id="idLink" class="nav-item">
-                        <a href="index.html" class="active-nav">Acerca de mí</a>
+                        <a href="index.html" class="nav-regular">Acerca de mí</a>
                     </div>
                     
                     <div class="nav-item">
@@ -89,16 +97,16 @@
                         <div class="nav-item-submenu">
                             <a href="adminCultivo.html">Descargar Contenido</a>
                             <a href="elimCultivo.html">Eliminar Contenido</a>
-                            <a href="acerca-de.html">Acerca De</a>
+                            <a href="index.html">Acerca De</a>
                             <a href="terminos.html">Terminos y Condiciones</a>
                         </div>
                     </div>                   
                 </div>
                 
                 <div class="sidebar-decoration"></div>
-                <div class="sidebar-logo-footer"></div>              
-
                 
+                <a href="#" class="sidebar-logo-footer"></a>
+                <!--<p class="sidebar-copyright">Copyright 2013. All rights reserved</p>-->
                 
             </div>
         </div>
@@ -142,96 +150,16 @@
 
             <div class="decoration"></div>          
 
-            <div class="container borderGaleria" id="ResultadoBusqueda" style="display:none">
-                <!--<div class="portfolio-item-thumb one-half borderImagenesGaleria">
-                    <h4>One</h4>  
-                    <a href="images/general-nature/1s.jpg" class="swipebox">
-                    <img class="responsive-image" src="images/general-nature/1s.jpg" alt="img">
-                    </a>                  
-                    
-                </div>
-                <div class="portfolio-item-thumb one-half last-column borderImagenesGaleria">
-                    <h4>Two</h4>
-                    <a href="images/general-nature/2s.jpg" class="swipebox">
-                        <img class="responsive-image" src="images/general-nature/2s.jpg" alt="img">
-                    </a>                    
-                </div>
-                <div class="portfolio-item-thumb one-half borderImagenesGaleria">
-                    <h4>Three</h4>                    
-                    <a href="images/general-nature/1s.jpg" class="swipebox">
-                        <img class="responsive-image" src="images/general-nature/3s.jpg" alt="img">
-                    </a>
-                </div>
-
-                <div class="portfolio-item-thumb one-half last-column borderImagenesGaleria">
-                    <h4>Four</h4>                    
-                    <a href="images/general-nature/2s.jpg" class="swipebox">
-                        <img class="responsive-image" src="images/general-nature/4s.jpg" alt="img">
-                    </a>
-                </div>
-                <div class="portfolio-item-thumb one-half borderImagenesGaleria">
-                    <h4>Five</h4>                    
-                    <a href="images/general-nature/2s.jpg" class="swipebox">
-                        <img class="responsive-image" src="images/general-nature/5s.jpg" alt="img">
-                    </a>
-                </div>
-                <div class="portfolio-item-thumb one-half last-column borderImagenesGaleria">
-                    <h4>Six</h4>                    
-                    <a href="images/general-nature/1s.jpg" class="swipebox">
-                        <img class="responsive-image" src="images/general-nature/6s.jpg" alt="img">
-                    </a>
-                </div>--> 
+            <div class="container borderGaleria" id="ResultadoBusqueda" style="display:none"> 
             </div>           
 
             <div class="decoration"></div>
 
             <div class="container">         
-                <!-- <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a> -->
-                    <a href="#" class="goup-footer"></a>
-                   <!--  <a href="#" class="twitter-footer"></a>
-                </div> -->
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
+                <a href="#" class="goup-footer"></a>
+                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>      
             </div>
         </div>
-         
-        <!--<div class="content">
-			<div class="decoration"></div>
-            <div class="content-header">
-            	<a href="#" class="content-logo"></a>
-                <a href="#" class="content-twitter"></a>
-                <a href="#" class="content-facebook"></a>       
-            </div>            
-            <div class="decoration"></div>          	
-
-            <div class="container no-bottom">
-                <h4>Touch swipe gallery!</h4>
-                <p>A gallery is essential in any template, so, if it's a mobile device, why not have a touch one!</p>
-            </div>
-            <ul class="gallery square-thumb">
-                <li><a class="swipebox" href="http://publico.corpoica.org.co/SiembraDrAgro/1_Organismo_0.jpg" title="An awesome gallery!"><img src="http://publico.corpoica.org.co/SiembraDrAgro/1_Organismo_0.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/2.jpg" title="An awesome gallery!"><img src="images/general-nature/2s.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/3.jpg" title="An awesome gallery!"><img src="images/general-nature/3s.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/1.jpg" title="An awesome gallery!"><img src="images/general-nature/4s.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/2.jpg" title="An awesome gallery!"><img src="images/general-nature/5s.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/3.jpg" title="An awesome gallery!"><img src="images/general-nature/6s.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/1.jpg" title="An awesome gallery!"><img src="images/general-nature/1s.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/2.jpg" title="An awesome gallery!"><img src="images/general-nature/2s.jpg" alt="img" /></a></li>
-                <li><a class="swipebox" href="images/gallery/full/3.jpg" title="An awesome gallery!"><img src="images/general-nature/3s.jpg" alt="img" /></a></li>
-            </ul>          	        
-                
-            <div class="decoration"></div>    
-                
-            <div class="container">         
-                <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a>
-                    <a href="#" class="goup-footer"></a>
-                    <a href="#" class="twitter-footer"></a>
-                </div>
-                <p class="copyright uppercase center-text no-bottom">Copyright 2013<br> All rights reserved</p>        
-			</div>
-		</div>--> 
-        
         </div>           
     </div>  
 </div>

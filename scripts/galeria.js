@@ -31,7 +31,7 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("tatbproductos.json", null, gotFileEntry, fail);
+    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
     ruta = fileSystem.root.toURL();
 }
 
@@ -59,7 +59,7 @@ function cargar_Productos() {
     }
     else
     {
-        /*var windowWidth = $(window).width();
+        var windowWidth = $(window).width();
         var windowHeight = $(window).height();
         var ancho=windowWidth-(windowWidth/10);
         $('#content-alert').html('<p>Debe tener conexión a internet para usar esta funcionalidad.</p>');
@@ -67,7 +67,7 @@ function cargar_Productos() {
             modal: true,
             draggable: false,
             resizable: false,
-            title: 'Advertencia:',
+            title: 'Aviso',
             minWidth:ancho,
             my: "center",
             at: "center",
@@ -80,9 +80,7 @@ function cargar_Productos() {
                     $(this).dialog("close");
                 }
             }
-        });*/
-
-        alert("debe tener conexión a internet si para usar esta funcionalidad.");
+        });
     }
 }
 
@@ -129,17 +127,15 @@ function cambioCheckProd(element){
 
 function buscarOrganismoCultivo(Id) 
 {
-    var path = ruta + "tatborganismosprodetapla.json";
+    var path = ruta + "TATB_OrganismosProdEtaPla.json";
     var cadena = "";   
     cont = 0;
     numeropp = 1;
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                if(field[x].prodid == Id){
-                    idsOrganismos.push(item.organismoid);
-                }
-            });
+            if(data[i].Prod_Id == Id){
+                idsOrganismos.push(field.Organismo_Id);
+            }
         });
         Lista_OrganismosGaleria();
     });
@@ -147,18 +143,16 @@ function buscarOrganismoCultivo(Id)
     
 function Lista_OrganismosGaleria() 
 {    
-    var path = ruta + "tatborganismos.json";
+    var path = ruta + "TATB_Organismos.json";
     var texto = "";
     cont = 0;
     numeropp = 1;
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                var t = $.inArray(field[x].organismoid, idsOrganismos)
-                if(t !== -1){
-                    texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="organismo" value="'+ field[x].organismoid + '" id="'+ field[x].organismoid +'" onchange="cambioCheckOrg(this)" />'+ field[x].organismodesc +'</h3>';                                   
-                }
-            });         
+            var t = $.inArray(data[i].Organismo_Id, idsOrganismos)
+            if(t !== -1){
+                texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="radio" name="organismo" value="'+ data[i].Organismo_Id + '" id="'+ data[i].Organismo_Id +'" onchange="cambioCheckOrg(this)" />'+ data[i].Organismo_Desc +'</h3>';                                   
+            }        
         });
         $("#enfermedad").html(texto);
     });
@@ -173,23 +167,21 @@ function cambioCheckOrg(element){
 
 function buscarFotos(){
 
-    var path = ruta + "tatbfotosdrgaleria.json";
+    var path = ruta + "TATB_FotosDrGaleria.json";
 
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                if(field[x].prodid == (IdProductoSeleccionado * 1) && field[x].organismoid == (IdOrganismoSeleccionado * 1)){
-                    idsFotos.push(item.fotoid);
-                    orden.push(item.fotoorden);
-                }
-            });         
+            if(data[i].Prod_Id == (IdProductoSeleccionado * 1) && data[i].Organismo_Id == (IdOrganismoSeleccionado * 1)){
+                idsFotos.push(field.Foto_Id);
+                orden.push(field.Foto_Orden);
+            }         
         });    
         SacarImagenes();
     });
 }
 
 function SacarImagenes(){
-    var path = ruta + "tatbfotos.json";
+    var path = ruta + "TATB_Fotos.json";
     var texto = ""; 
     var tamArr = Math.max.apply(Math,orden);
     var imagenes = new Array(tamArr);
@@ -197,12 +189,10 @@ function SacarImagenes(){
     $.getJSON("" + path + "", function(data) {
         texto = "";
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                var t = $.inArray(item.fotoid, idsFotos);
-                if(t !== -1){
-                    imagenes[orden[t]-1] = item;
-                }
-            });         
+            var t = $.inArray(field.Foto_Id, idsFotos);
+            if(t !== -1){
+                imagenes[orden[t]-1] = field;
+            }         
         });
         orden = [];
         pintarImagenes(imagenes);
@@ -214,9 +204,7 @@ function pintarImagenes(imagenes){
     var texto = "";
     texto += "<ul class='gallery square-thumb'>";
     $.each(imagenes,function(i,imagen){
-        if(i < 9) {
-            texto += "<li><a class='swipebox' href='" + imagen.fotourl + "' title='" + imagen.fotodesc + "'><img src='" + imagen.fotourl + "' alt='img' /></a></li>";
-        }
+        texto += "<li><a class='swipebox' href='" + imagen.Foto_Url + "' title='" + imagen.Foto_Desc + "'><img src='" + imagen.Foto_Url + "' alt='img' /></a></li>";
     });
     texto += "</ul>";
     $("#ResultadoBusqueda").html(texto);
@@ -224,8 +212,4 @@ function pintarImagenes(imagenes){
     idsFotos = [];
 
     $('.swipebox').swipebox();
-
-    /*(function($) {
-        $('.swipebox').swipebox();
-    })(jQuery);*/
 }

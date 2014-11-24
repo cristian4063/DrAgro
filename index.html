@@ -23,6 +23,8 @@
 <link href="styles/owl.theme.css" 		rel="stylesheet" type="text/css">
 <link href="styles/swipebox.css"		 rel="stylesheet" type="text/css">
 <link href="styles/colorbox.css"		 rel="stylesheet" type="text/css">
+<link href="styles/jquery-ui.css" rel="stylesheet" type="text/css">
+<link href="styles/general.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/jqueryui.js"></script>
@@ -34,6 +36,7 @@
 <script type="text/javascript" src="scripts/custom.js"></script>
 <script type="text/javascript" src="scripts/framework.js"></script>
 <script type="text/javascript" src="scripts/framework.launcher.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui.js"></script>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="scripts/bd.js"></script>
 <script type="text/javascript" src="scripts/menuHeight.js"></script>
@@ -44,26 +47,14 @@ function swapStyleSheet(sheet){
 	document.getElementById('pagestyle').setAttribute('href', sheet);
 }
 </script>
-<style>
-    .drAgroInvitacionUno{
-    text-align: center;
-    font-size: 16px;
-    font-family:Verdana;
-}
-.drAgroProfesion{
-    width: 100%;
-    text-align: center;
-    color: white;
-    padding: 10px 0;
-    font-size: 18px;
-    margin-bottom: 10px;    
-    border-bottom: 3px #759a51 solid;
-    background-color: #477f20;
-}
-</style>
 
 </head>
 <body>
+
+<div id="div-confirm" style="display: none">
+    <div id="content-alert">
+    </div>
+</div>
 
 <div id="preloader">
 	<div id="status">
@@ -77,19 +68,19 @@ function swapStyleSheet(sheet){
 <div class="all-elements">
     <div id="sidebar" class="page-sidebar">
         <div class="page-sidebar-scroll">
-            <div class="sidebar-content-background">
-                <div class="sidebar-section">
-                    <a href="#" class="sidebar-close"></a>
-                    <em>Menu</em>
+			<div id="contentMenu" class="sidebar-content-background">
+            	<div class="sidebar-section">
+                	<a href="#" class="sidebar-close"></a>
+                	<em>Menu</em>
                 </div>
                 <div class="sidebar-decoration"></div>         
-                <div class="sidebar-logo"></div>              
-                                 
+            	<a href="#" class="sidebar-logo"></a>              
+                <div class="sidebar-decoration"></div>                   
                 
                 <div class="sidebar-navigation">     
                      
                     <div id="idLink" class="nav-item">
-                        <a href="index.html" class="active-nav">Acerca de mí</a>
+                        <a href="index.html" class="nav-regular">Acerca de mí</a>
                     </div>
                     
                     <div class="nav-item">
@@ -120,9 +111,9 @@ function swapStyleSheet(sheet){
                 </div>
                 
                 <div class="sidebar-decoration"></div>
-                <div class="sidebar-logo-footer"></div>            
 
-                
+                <a href="#" class="sidebar-logo-footer"></a>
+                <!--<p class="sidebar-copyright">Copyright 2013. All rights reserved</p>-->
                 
             </div>
         </div>
@@ -171,23 +162,12 @@ function swapStyleSheet(sheet){
             
             <div class="decoration"></div>
             
-            <p class="drAgroInvitacionUno">Dr.Agro le invita a compartir su Conocimiento</p>               
+            <p class="drAgroInvitacionUno">Dr.Agro te invita a compartir tu Conocimiento</p>               
             
-            <div class="container">         
-                <!-- <div class="footer-socials">
-                    <a href="#" class="facebook-footer"></a> -->
-                    <a href="#" class="goup-footer"></a>
-                   <!--  <a href="#" class="twitter-footer"></a>
-                </div> -->
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>        
+            <div class="container">
+                <a href="#" class="goup-footer"></a>
+                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>     
             </div>
-            
-            <!--<div class="container">         
-                <div>                    
-                    <a href="#" class="goup-footer"></a>                    
-                </div>                       
-                <p class="copyright uppercase center-text no-bottom">Corpoica 2014<br> Todos los derechos reservados</p>
-            </div>-->
         </div>          
     </div> 
 </div>
