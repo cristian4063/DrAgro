@@ -103,10 +103,18 @@ function deleteImages()
         
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
 
-        fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
-            fileEntry.remove(function(entry) {
-                deleteImages();
-            }, fail);
+        var dirReader = fileSystem.root.createReader();
+        dirReader.readEntries(function(entries) {
+            for (var i = 0; i < entries.length; i++) {
+                if(entries[i].name === "DrAgro")
+                {
+                    entries[i].getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
+                        fileEntry.remove(function(entry) {
+                            deleteImages();
+                        }, fail);
+                    }, fail);
+                }
+            };
         }, fail);
 
     }, fail);

@@ -6,7 +6,7 @@ function configurar_db() {
     }
 
     function IngresarVersion(tx) {
-        tx.executeSql('INSERT INTO versiones (version_id, numero) VALUES (1, 0)');
+        tx.executeSql('INSERT INTO versiones (version_id, numero) VALUES (1, 1)');
     }
 
     function error(error) {

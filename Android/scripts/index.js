@@ -33,6 +33,8 @@ function download() {
         remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_ProductoOrganismoFoto.json");
         remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_FotosDrGaleria.json");
 
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onRequestFileSystemSuccess, null);
+        
         setTimeout(function() {
 
             var windowWidth = $(window).width();
@@ -94,22 +96,42 @@ function downloadArchieves() {
     
     var remoteFile = remoteFiles.pop();
 
-    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
-    //var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1, remoteFile.lastIndexOf('?')) + ".json";
+    var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/') + 1);
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-        fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
-            var localPath = fileSystem.root.toURL() + localFileName;
-            if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
-                localPath = localPath.substring(7);
-            }
-            var ft = new FileTransfer();
-            ft.download(remoteFile,
-                localPath, function(entry) {
-                    downloadFiles();
-                }, fail);
+        var dirReader = fileSystem.root.createReader();
+        dirReader.readEntries(function(entries) {
+            for (var i = 0; i < entries.length; i++) {
+                if(entries[i].name === "DrAgro")
+                {
+                    entries[i].getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
+                        var localPath = fileSystem.root.toURL() + "/DrAgro/" + localFileName;
+                        if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+                            localPath = localPath.substring(7);
+                        }
+                        var ft = new FileTransfer();
+                        ft.download(remoteFile,
+                        localPath, function(entry) {
+                            downloadFiles();
+                        }, fail);
+                    }, fail);
+                }
+            };
         }, fail);
     }, fail);
+}
+
+function onRequestFileSystemSuccess(fileSystem) { 
+    var entry=fileSystem.root; 
+    entry.getDirectory("DrAgro", {create: true, exclusive: false}, onGetDirectorySuccess, onGetDirectoryFail); 
+} 
+
+function onGetDirectorySuccess(dir) { 
+    console.log("Created dir "+dir.name); 
+} 
+
+function onGetDirectoryFail(error) { 
+    console.log("Error creating directory "+error.code); 
 }
 
 function fail(error) {

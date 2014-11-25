@@ -30,8 +30,17 @@ function onDeviceReady() {
 }
 
 function gotFS(fileSystem) {
-    fileSystem.root.getFile("TATB_Productos2.json", null, gotFileEntry, fail);
-    ruta = fileSystem.root.toURL();
+    var dirReader = fileSystem.root.createReader();
+    dirReader.readEntries(success, fail);
+}
+
+function success (entries) {
+    for (var i = 0; i < entries.length; i++) {
+        if(entries[i].name === "DrAgro")
+        {
+            entries[i].getFile("TATB_Productos2.json", null, gotFileEntry, fail);
+        }
+    };
 }
 
 function gotFileEntry(fileEntry) {
@@ -39,6 +48,10 @@ function gotFileEntry(fileEntry) {
 }
 
 function gotFile(file){
+
+    var path = file.fullPath;
+    ruta = path.substring(0, path.lastIndexOf('/') + 1);
+
     if(ruta != "") {
         window.localStorage.setItem("ruta", ruta);
         cargar_Productos();
@@ -175,16 +188,24 @@ function downloadImages() {
     var localFileName = remoteFile.substring(remoteFile.lastIndexOf('/')+1);
 
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem) {
-        fileSystem.root.getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
-            var localPath = fileSystem.root.toURL() + localFileName;
-            if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
-                localPath = localPath.substring(7);
-            }
-            var ft = new FileTransfer();
-            ft.download(remoteFile,
-                localPath, function(entry) {
-                    downloadImages();
-                }, fail);
+        var dirReader = fileSystem.root.createReader();
+        dirReader.readEntries(function(entries) {
+            for (var i = 0; i < entries.length; i++) {
+                if(entries[i].name === "DrAgro")
+                {
+                    entries[i].getFile(localFileName, {create: true, exclusive: false}, function(fileEntry) {
+                        var localPath = fileSystem.root.toURL() + "/DrAgro/" + localFileName;
+                        if (device.platform === "Android" && localPath.indexOf("file://") === 0) {
+                            localPath = localPath.substring(7);
+                        }
+                        var ft = new FileTransfer();
+                        ft.download(remoteFile,
+                        localPath, function(entry) {
+                            downloadImages();
+                        }, fail);
+                    }, fail);
+                }
+            };
         }, fail);
     }, fail);
 }
