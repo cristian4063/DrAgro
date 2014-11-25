@@ -9,6 +9,9 @@ $(document).ready(function() {
     if(applaunchCount) {
         changeLink();
     }
+    else {
+        abrirRedirect("Para acceder a esta sección por primera vez es necesario descargar información de internet, una vez tenga conectividad, por favor reinicie la aplicación.");
+    }
 
 });
 
@@ -126,6 +129,33 @@ function abrirAlert(contenido)
         buttons: {
             "Aceptar": function() {
                 $(this).dialog("close");
+            }
+        }
+    });
+}
+
+function abrirRedirect(contenido)
+{
+    var windowWidth = $(window).width();
+    var windowHeight = $(window).height();
+    var ancho=windowWidth-(windowWidth/10);
+    $('#content-alert').html('<p>'+contenido+'</p>');
+    $("#div-confirm").dialog({
+        modal: true,
+        draggable: false,
+        resizable: false,
+        title: 'Aviso',
+        minWidth:ancho,
+        my: "center",
+        at: "center",
+        of: window,
+        show: 'blind',
+        hide: 'blind',
+        dialogClass: 'prueba',
+        buttons: {
+            "Aceptar": function() {
+                $(this).dialog("close");
+                document.location.href="index.html";
             }
         }
     });
