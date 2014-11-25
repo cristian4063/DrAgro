@@ -18,7 +18,7 @@ function download() {
 
     networkState = navigator.connection.type;
 
-    if(networkState === "wifi" || networkState === "2g" || networkState === "3g" || networkState === "4g")
+    if(networkState === "wifi" || networkState === "2g" || networkState === "3g" || networkState === "4g" || networkState === "unknown")
     {
         remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_Productos2.json");
         remoteFiles.push("http://www.siembra.co/netcorpoica/WebNetAgroNetTec/WebNetAgroNetTec/Pg_GestArchivos/Archivos_DrAgro/TATB_EtapasCicloFenologico2.json");
