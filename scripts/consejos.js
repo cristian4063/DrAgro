@@ -51,11 +51,9 @@ function cargar_Consejos()
     var conteo = "";    
     $.getJSON("" + path + "", function(data) {   
         $.each(data, function (i, field) {
-            $.each(field, function (x, item) {
-                if (field[x].DrAgroTips_Estado === "1") {  
-                    consejos.push(field[x].DrAgroTips_Desc);                        
-                }
-            });
+            if (data[i].DrAgroTips_Estado === "1") {  
+                consejos.push(data[i].DrAgroTips_Desc);                        
+            }
         });
         consejoSiguiente();
     });
