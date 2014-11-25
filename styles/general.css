@@ -1,13 +1,13 @@
 /*--------------------Estilos alerta---------------------*/
 .ui-widget-header {
-    border: 1px solid #27ae60 !important;
-    background-color: #27ae60 !important;
-    background: #27ae60 !important;
+    border: 1px solid #477f20 !important;
+    background-color: #477f20 !important;
+    background: #477f20 !important;
 }
 
 .ui-dialog .ui-dialog-buttonpane button{
-    background:#27ae60 !important;
-    border: 1px solid #27ae60 !important;
+    background:#477f20 !important;
+    border: 1px solid #477f20 !important;
     color: white;
 }
 

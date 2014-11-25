@@ -542,7 +542,8 @@ a{
 .button-turqoise{			background-color:#16a085;	}
 .button-turqoise:active{	 background-color:#085b4b;	}
 
-.button-green{			   background-color:#27ae60;	}
+.button-green{			   background-color:#477f20; border-radius: 10px;	}
+/*.button-green{			   background-color:#27ae60;	}*/
 .button-green:active{		background-color:#177c42;	}
 
 .button-blue{				background-color:#2980b9;	}
@@ -1385,8 +1386,14 @@ table tr:hover td{
 	padding:15px;
 }
 
-.toggle-1, .toggle-2, .toggle-3{
+/*.toggle-1, .toggle-2, .toggle-3{
 	background-color:#eeeeee;   
+}*/
+
+.toggle-1, .toggle-2, .toggle-3{
+	background-color:white; 
+	border-radius: 10px; 
+	border:1px solid #65B32E;
 }
 
 .toggle-3{
