@@ -14,7 +14,6 @@ $(document).ready(function() {
     else {
         abrirRedirect("Para acceder a esta sección por primera vez es necesario descargar información de internet, una vez tenga conectividad, por favor reinicie la aplicación.");
     }
-
 });
 
 function changeLink(){
@@ -81,7 +80,7 @@ function seleccionarCheckbox(results){
     var len = results.rows.length;
 
     var check=$('[name="producto"]');
-    var titulos=$('[name="titulo"]'); 
+    var titulos=$('[name="titulo"]');
 
     for(var i=0;i<check.length;i++){
         var id1=check[i].getAttribute("id")
@@ -93,6 +92,10 @@ function seleccionarCheckbox(results){
         
         }
     }
+
+    check.click(function() {
+        $('#contactSubmitButton').attr("disabled", !check.is(":checked"));
+    });
 }
 
 function errorCargar_productos(err) {

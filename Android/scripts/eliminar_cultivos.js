@@ -41,6 +41,12 @@ function crear_lista_productos(tx, results) {
         texto += '<h3 style="margin-left:20px;font-family:Verdana;"><input type="checkbox" name="producto" value="'+ results.rows.item(i).producto_id + '"/>'+ results.rows.item(i).descripcion +'</h3>';
     }
     $("#producto").html(texto);
+
+    var check=$('[name="producto"]');
+
+    check.click(function() {
+        $('#contactSubmitButton').attr("disabled", !check.is(":checked"));
+    });
 }
 
 function eliminarProductos() {

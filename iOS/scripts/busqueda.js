@@ -851,6 +851,10 @@ function Mostrar_Listado()
     $(".filtrosBusqueda").css("display", "block");
 }
 
+function linkCorpoica(url) {
+    window.open(url, "_blank", "closebuttoncaption=Regresar");
+}
+
 function abrirRedirect(contenido)
 {
     var windowWidth = $(window).width();

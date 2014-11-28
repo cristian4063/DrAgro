@@ -106,6 +106,10 @@ function seleccionarCheckbox(results){
         
         }
     }
+
+    check.click(function() {
+        $('#contactSubmitButton').attr("disabled", !check.is(":checked"));
+    });
 }
 
 function errorCargar_productos(err) {
